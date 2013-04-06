@@ -1,0 +1,17 @@
+<article id="users">
+  <section id="main">
+    <h1>
+      <%=  link_to("Администрирование", {:controller => '/admin', :action => 'home'}) %> / <b><%=  link_to("Пользователи", {:controller => '/admin/user', :action => 'index'}) %></b>
+    </h1>
+    <ul>
+      <li><%= link_to("Все",{:controller => '/admin/user', :action => 'index', :type => 'all'}) %></li>
+      <li><%= link_to("Администраторы",{:controller => '/admin/user', :action => 'index', :type => 'admin'}) %></li>
+      <li><%= link_to("Руководство", {:controller => 'admin/user', :action => 'index', :type => 'chief'}) %></li>
+      <li><%= link_to("Преподаватели",{:controller => '/admin/user', :action => 'index', :type => 'teacher'}) %></li>
+      <li><%= link_to("Слушатели",{:controller => '/admin/user', :action => 'index', :type => 'student'}) %></li>
+    </ul>
+    <%= render(:partial => 'users') %>
+  </section>
+</article>
+
+

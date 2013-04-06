@@ -1,0 +1,39 @@
+<section id="main">
+  <%= form_tag({:action => "step3"}, :remote => true) do %>
+    <h1>Регистрация</h1>
+    <% unless Faculty.all.empty? %>
+      <p>
+        <label for="faculty">Факультет</label>
+        <%= select_tag(:faculty_id, options_from_collection_for_select(Faculty.all, :id, :name, session[:faculty_id]), {:class => "select", :id => "faculty", :prompt => "факультет"}) %>
+      </p>
+    <% end %>
+    <p>
+      <label for="course">Курс</label>
+      <%= select_tag(:course_number, "<option value=1>1 курс</option><option value=2>2 курс</option><option value=3>3 курс</option><option value=4>4 курс</option><option value=5>5 курс</option>".html_safe, {:class => "select", :id => "course", :prompt => "курс"}) %>
+    </p>
+
+    <p>
+      <label>Должность</label>
+      <%= select_tag(:post_id, options_from_collection_for_select(CoursePost.all, :id, :name, session[:post_id]), {:class => "select", :id => "post", :prompt => "должность"}) %>
+    </p>
+    
+    <% unless MilitaryRank.all.empty? %>
+      <p>
+        <label for="military_rank">Воинское звание</label>
+        <%= select_tag(:military_rank, options_from_collection_for_select(MilitaryRank.all, :id, :name, session[:military_rank_id]),{:class => "select", :id => "military_rank", :prompt => "гражданский"}) %>
+      </p>
+    <% end %>
+    <p class="button">
+      <%= submit_tag "Завершить", :id => "step3_to_step4" %>
+      <%= submit_tag "Назад", :id => "step3_to_step2" %>
+    </p>
+  <% end %>
+</section>
+<section class="remark">
+  <p>Вы уже зарегистрированы?
+     <%= link_to("Тогда войдите", { :controller => "/user/login", :action => "login"}) %>
+  </p>
+</section>
+<section class="invisible">
+  <%= button_to("",{:controller => '/chief', :action => 'home'}, {:id => "end_of_registration"}) %>
+</section>

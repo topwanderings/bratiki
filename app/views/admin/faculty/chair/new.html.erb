@@ -1,0 +1,25 @@
+<article id="new_chair">
+  <section id="main">
+    <%= form_tag({:action => "new", :faculty_id => params[:faculty_id]}) do %>
+        <h1>
+          Добавить
+        </h1>
+
+        <p class="field">
+          <label for="name" data-icon="e" > Название кафедры </label>
+          <%= text_field_tag("name", params[:name], {:placeholder => "математический анализ"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <p class="field">
+          <label for="number" data-icon="e" > Номер кафедры </label>
+          <%= text_field_tag("number", params[:number], {:placeholder => "731"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Добавить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,19 @@
+<article id="edit_pair">
+  <section id="main">
+    <h1>
+      <%=  link_to("Пары", {:controller => '/user/day/pair', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %> / <b><%=  link_to(@pair.subject.name, {:controller => '/user/day/pair', :action => 'edit', :pair_id => params[:pair_id], :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+    <% unless @groups.empty? %>
+      <%= table_for(@groups) do |t| %>
+        <%= t.head do %>
+          <%= t.h "Журанлы" %>
+        <% end %>
+        <%= t.body do |group| %>
+          <%= t.r do  %>
+            <%= t.d link_to(group.number, {}) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+</article>

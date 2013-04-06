@@ -1,0 +1,12 @@
+<article id="posts">
+  <section id="main">
+    <h1>
+      <%=  link_to("Словари", {:controller => '/admin/dictionary', :action => 'index'}) %> / <b><%=  link_to("Должности", {:controller => '/admin/dictionary/post', :action => 'index'}) %></b>
+    </h1>
+    <%= render(:partial => 'posts') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/admin/dictionary/post', :action => 'new'}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>
+

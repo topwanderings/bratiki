@@ -1,0 +1,28 @@
+<article id="schedule">
+  <section id="main">
+    <div id="calendar">
+      <h2 id="month">
+        <%= button_to("<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m")}, {:class => "row", :id => "back"}) %>
+        <%= format_date @date %>
+        <%= button_to(">", {:month => (@date.end_of_month+1).strftime("%Y-%m")}, {:class => "row", :id => "forward"}) %>
+      </h2>
+      <%= calendar_for(@pairs, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
+          <%= calendar.head('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье') %>
+          <% calendar.day(:day_method => :date_time) do |date, day| %>
+                <%= date.day %><br/>
+                <% for pair in day %>
+                  <a class="tooltip"><%= pair.object %>
+                    <span>
+                       <%= pair.object %><br/>
+                       <%= pair.kind %><br/>
+                       <%= pair.group %><br/>
+                       <%= pair.place %><br/>
+                       <%= pair.date_time.strftime("%H:%M") %>
+                    </span>
+                  </a>
+                <% end %>
+          <% end %>
+      <% end %>
+    </div>
+  </section>
+</article>

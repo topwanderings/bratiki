@@ -1,0 +1,10 @@
+<%= table_for @groups do |t| %>
+    <%= t.body do |group| %>
+        <%= t.r do %>
+            <%= t.d button_to("удалить", { :controller => '/admin/institute/chair/group', :action => 'destroy', :group_id => group, :institute_id => params[:institute_id], :chair_id => params[:chair_id] }, {:class => 'destroy'}) %>
+            <%= t.d link_to(group.number, { :controller => '/admin/institute/chair/group', :action => 'show', :group_id => group, :institute_id => params[:institute_id] }) %>
+        <% end %>
+    <% end %>
+<% end %>
+
+

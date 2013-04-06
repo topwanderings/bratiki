@@ -1,0 +1,15 @@
+<%= table_for @institutes do |t| %>
+    <%= t.body do |institute| %>
+        <%= t.r do %>
+          <%= t.d link_to(institute.name, { :controller => '/teacher/institute', :action => 'show', :institute_id => institute }, {:method => 'get', :class => 'show'}) %>
+        <% end %>
+        <%= t.r do %>
+          <%= t.d :class => 'td_list' do  %>
+            <%= link_to("Факультеты", { :controller => '/teacher/institute/faculty', :action => 'index', :institute_id => institute }, {:class => 'list_name'}) %>
+            <% institute.faculties.each do |faculty| %>
+              <br/><%= link_to(faculty.name , {:controller => '/teacher/institute/faculty', :action => 'show', :institute_id => institute, :faculty_id => faculty}, {:class => 'list'}) %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>

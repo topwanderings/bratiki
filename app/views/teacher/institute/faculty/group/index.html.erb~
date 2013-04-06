@@ -1,0 +1,12 @@
+<article id="groups">
+  <section id="main">
+    <h1>
+      <%=  link_to(Faculty.find(params[:faculty_id]).name, {:controller => '/teacher/institute/faculty', :action => 'show', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id]}, {:method => 'get'}) %> / <b><%=  link_to("Группы", {:controller => '/teacher/institute/faculty/group', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id]}) %></b>
+    </h1>
+    <%= render(:partial => 'groups') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => 'teacher/institute/faculty/group', :action => 'new', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>
+

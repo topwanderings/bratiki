@@ -1,0 +1,19 @@
+<article id="edit_group">
+  <section id="main">
+    <%= form_tag({:action => "edit", :chair_id => params[:chair_id]}) do %>
+        <h1>
+          Изменить
+        </h1>
+
+        <p class="field">
+          <label for="number" data-icon="u" > Номер </label>
+          <%= text_field_tag("number", @group.number, {:placeholder => "7315"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

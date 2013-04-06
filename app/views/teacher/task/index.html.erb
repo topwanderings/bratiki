@@ -1,0 +1,39 @@
+<article>
+    <section>
+      <div class='Navigation'>
+        <table><tr>
+          <td>
+            <div><p>Список задач</p></div>
+          </td>
+        </tr></table>
+      </div>
+
+      <div class='ListTasks'>
+        <div class='Tasks'>
+          <% if @tasks %>
+            <% @tasks.each do |task| %>
+              <div class = 'Task<% if task.status %> TaskComplete<% end %>' id = '<%= task.id %>'>
+                <table><tr>
+                  <td>
+                    <div class='ShowTaskHelper'></div>
+                  </td>
+                  <td>
+                    <div class = 'InputNameTask'>
+                      <input type = 'text' value = '<%= task.name %>'>
+                    </div>
+                  </td>
+                  <td>
+                    <div class = 'ClickTask'></div>
+                  </td>
+                </tr></table>
+              </div>
+            <% end %>
+          <% end %>
+          <div class='AddTask'>
+            <p>Добавить задачу</p>
+          </div>
+        </div>
+      </div>
+      <%= render :partial => 'patterns' %>
+    </section>
+</article>

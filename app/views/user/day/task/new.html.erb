@@ -1,0 +1,27 @@
+<article id="new_task">
+  <section id="main">
+    <%= form_tag({:action => "new"}) do %>
+        <h1>
+          Добавить
+        </h1>
+
+        <p class="field">
+          <label for="title"> Заголовок </label>
+          <%= text_field_tag("title", params[:title], {:placeholder => "Заголовок"})  %>
+          <label for="title" id="error_title" class="error"><%= flash[:title] %></label>
+        </p>
+
+        <p class="field">
+          <label for="title"> Описание </label>
+          <%= text_area_tag("note", params[:note])  %>
+          <label for="note" id="error_note" class="error"><%= flash[:note] %></label>
+        </p>
+        
+        <%= time_select(:date_time, params[:date_time])  %>
+
+        <p class="button">
+          <%= submit_tag "Добавить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

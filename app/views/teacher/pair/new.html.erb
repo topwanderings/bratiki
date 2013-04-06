@@ -1,0 +1,39 @@
+<article id="new_task">
+  <section id="main">
+    <%= form_tag({:action => "new"}) do %>
+        <h1>
+          Добавить
+        </h1>
+
+        <p class="field">
+          <label for="object"> Название предмета </label>
+          <%= text_field_tag("object", params[:object], {:placeholder => "Методы программирования"})  %>
+          <label for="object" id="error_object" class="error"><%= flash[:object] %></label>
+        </p>
+
+        <p class="field">
+          <label for="kind"> Тип занятия </label>
+          <%= text_field_tag("kind", params[:kind], {:placeholder => "Лекция"})  %>
+          <label for="kind" id="error_kind" class="error"><%= flash[:kind] %></label>
+        </p>
+
+        <p class="field">
+          <label for="place"> Место проведения занятия </label>
+          <%= text_field_tag("place", params[:place], {:placeholder => "УНЦ-14"})  %>
+          <label for="place" id="error_place" class="error"><%= flash[:place] %></label>
+        </p>
+
+        <p class="field">
+          <label for="group"> Группы </label>
+          <%= text_field_tag("group", params[:group], {:placeholder => "7341, 7345"})  %>
+          <label for="group" id="error_group" class="error"><%= flash[:group] %></label>
+        </p>
+
+        <%= time_select(:date_time, params[:date_time])  %>
+
+        <p class="button">
+          <%= submit_tag "Добавить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

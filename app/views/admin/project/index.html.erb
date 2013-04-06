@@ -1,0 +1,9 @@
+<article id="index">
+  <section id="main">
+    <ul>
+      <li><%= link_to("Перевести систему на новый учебный год", { :controller => '/admin/project', :action => 'new_study_year' })%></li>
+      <li><%= link_to("Посмотреть журнал событий", { :controller => '/admin/project', :action => 'log' })%></li>
+      <li><%= link_to("Перезагрузить систему", { :controller => '/admin/project', :action => 'restart' })%></li>
+    </ul>
+  </section>
+</article>

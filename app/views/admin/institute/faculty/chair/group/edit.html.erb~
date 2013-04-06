@@ -1,0 +1,18 @@
+<article id="edit_group">
+  <section id="main">
+    <h1>
+      <%=  link_to("Группы", {:controller => '/admin/institute/faculty/chair/group', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => params[:chair_id]}) %> / <b><%=  link_to(Group.find(params[:group_id]).number, {:controller => '/admin/institute/faculty/chair/group', :action => 'edit', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => params[:chair_id], :group_id => params[:group_id]}, {:method => 'get'}) %></b>
+    </h1>
+    <%= form_tag({:action => "edit", :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => params[:chair_id]}) do %>
+        <p class="field">
+          <label for="number" data-icon="u" > Номер группы</label>
+          <%= text_field_tag("number", @group.number, {:placeholder => "7315"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,188 @@
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+
+
+$(document).ajaxSend(function(e, xhr, options) {
+    var token;
+    token = $("meta[name='csrf-token']").attr("content");
+    return xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+$(document).on('click', '.LinkTask', function(){
+    var task_id = $(this).attr('id');
+    if(task_id)
+        $('article').load('/teacher/task/show/'+task_id+' section');
+    else
+        $('article').load('/teacher/task/index section');
+});
+
+$(document).on('click', '.AddTask', function(){
+    var parent_task_id = $(this).parents('.ListTasks').attr('id');
+    $.post('/teacher/task/add.js', { parent_task_id: parent_task_id });
+});
+
+$(document).on('change', '.InputNameTask :text', function(){
+    var name = $(this).val();
+    var task_id = $(this).parents('.Task').attr('id');
+    $.post('/teacher/task/edit.js', { task_id: task_id, name: name });
+});
+
+$(document).on('click', '.ClickTask', function(){
+    var task_id = $(this).parents('.Task').attr('id');
+    $('article').load('/teacher/task/show/'+task_id+' section');
+});
+
+$(document).on('mouseenter', '.Pattern', function(){
+    $('.Pattern').draggable({
+        handle: '.NamePattern'
+    });
+    $('.ListTasks').droppable({
+        Accept: '.Pattern',
+        tolerance: 'pointer',
+        drop: function(event, ui){
+            var parent_task_id = $('.ListTasks').attr('id');
+            var task_id = ui.helper.attr('id');
+            $.post('/teacher/task/copy.js', { task_id: task_id, parent_task_id: parent_task_id });
+            if(parent_task_id)
+                $('article').load('/teacher/task/show/'+parent_task_id+' section');
+            else
+                $('article').load('/teacher/task/index section');
+        }
+    });
+});
+
+$(document).on('mouseenter', 'section > .ListPatterns .Finder :text', function(){
+    $('section > .ListPatterns .Finder :text').keyup(function(){
+        var phrase = $(this).val();
+        var owner_patterns = $('.ListPatterns').attr('id');
+        $('.Patterns').load('/teacher/pattern/show .Content'+ owner_patterns +'Patterns',  { phrase: phrase, owner_patterns: owner_patterns });
+    });
+});
+
+$(document).on('change', 'section > .ListPatterns .Finder :text', function(){
+    var phrase = $(this).val();
+    var owner_patterns = $('.ListPatterns').attr('id');
+    $('.Patterns').load('/teacher/pattern/show .Content'+ owner_patterns +'Patterns',  { phrase: phrase, owner_patterns: owner_patterns });
+});
+
+$(document).on('click', '.SelectSystemPatterns', function(){
+    $('.ListPatterns').attr('id', 'System');
+    $('.Patterns').load('/teacher/pattern/show .ContentSystemPatterns', { owner_patterns: 'System' });
+});
+
+$(document).on('click', '.SelectUsersPatterns', function(){
+    $('.ListPatterns').attr('id', 'Users');
+    $('.Patterns').load('/teacher/pattern/show .ContentUsersPatterns', { owner_patterns: 'Users' });
+
+});
+
+$(document).on('click', '.ManagementParameters', function(){
+    var task_id = $('.ListTasks').attr('id');
+    $('.ContentItemManagement').load('/teacher/task/management/'+ task_id +' .ListParameters');
+});
+
+$(document).on('click', '.ManagementPatterns', function(){
+    var task_id = $('.ListTasks').attr('id');
+    $('.ContentItemManagement').load('/teacher/task/management/'+ task_id +' .ListPatterns');
+});
+
+$(document).on('mouseenter', '.ContentItemManagement .ListPatterns .Finder :text', function(){
+    $('.ContentItemManagement .ListPatterns .Finder :text').keyup(function(){
+        var task_id = $('.ListTasks').attr('id');
+        var phrase = $(this).val();
+        $('.ContentListPatterns').load('/teacher/task/management/'+ task_id +'.ContentListPatterns .Patterns', { phrase: phrase });
+    });
+});
+
+$(document).on('click', '.DestroyUsersPattern', function(){
+    var pattern_id = $(this).parents('.Pattern').attr('id');
+    var owner_patterns = $('.ListPatterns').attr('id');
+    $.post('/teacher/pattern/destroy.js', { pattern_id: pattern_id });
+    $('.Patterns').load('/teacher/pattern/show .ContentUsersPatterns', { owner_patterns: owner_patterns });
+});
+
+$(document).on('mouseenter', '.Date input', function(){
+    $(this).datepicker();
+});
+
+$(document).on('click', '.AddParameter', function(){
+    var task_id = $(this).parents('.ListParameters').attr('id');
+    $.post('/teacher/parameter/constructor.js', { task_id: task_id });
+});
+
+$(document).on('change', '.ParameterName :text', function(){
+    var name = $(this).val();
+    var parameter_id = $(this).parents('.Parameter').attr('id');
+    $.post('/teacher/parameter/edit.js', { parameter_id: parameter_id, name: name });
+});
+
+$(document).on('change', '.ParameterValue :text', function(){
+    var value = $(this).val();
+    var parameter_id = $(this).parents('.Parameter').attr('id');
+    $.post('/teacher/parameter/edit.js', { parameter_id: parameter_id, value: value });
+});
+
+$(document).on('click', '.DestroyParameter', function(){
+    var parameter_id = $(this).parents('.Parameter').attr('id');
+    var task_id = $(this).parents('.ListParameters').attr('id');
+    $.post('/teacher/parameter/destroy.js', { parameter_id: parameter_id });
+    $('article').load('/teacher/task/show/'+task_id+' section');
+});
+
+$(document).on('mouseenter', '.ShowTaskHelper', function(event){
+    var task_id = $(this).parents('.Task').attr('id');
+    var pattern_id = $(this).parents('.ListTasks').attr('id');
+    if($('.TasksHelper').length == 0)
+    {   
+        $("<div class='TasksHelper'>                                \
+             <div class='CompleteTask'><p>Выполнено</p></div>       \
+             <div class='SendToPatterns'<p>В образцы</p></div>      \
+             <div class='DestroyTask'<p>Удалить</p></div>           \
+           </div>")
+            .css({
+                position: 'absolute',
+                left: event.pageX-310,
+		margin-top: 19,
+                cursor: 'pointer',
+                background: 'rgba(200, 200, 200, 0.3)'
+            })
+            .click(function(){
+                $(this).fadeOut(1000, function(){$(this).remove();});
+            })
+            .mouseleave(function(){
+                $(this).fadeOut(1000, function(){$(this).remove();});
+            })
+            .appendTo($(this))
+            .fadeIn(1000).
+            focus().
+            blur(function(){
+                $(this).fadeOut(1000, function(){$(this).remove();});
+            });
+
+        if($(this).parents('.Task').hasClass('TaskComplete'))
+            $('.CompleteTask').css('text-decoration', 'line-through');
+
+        $('.CompleteTask').click(function(){
+            $.post('/teacher/task/edit.js', { task_id: task_id, revers_status: true });
+            if(pattern_id)
+                $('.ListTasks').load('/teacher/task/show/'+ pattern_id +' .Tasks');
+            else
+                $('.ListTasks').load('/teacher/task/index .Tasks');
+        });
+        $('.SendToPatterns').click(function(){
+            var owner_patterns = $('.ListPatterns').attr('id');
+            $.post('/teacher/pattern/copy.js', { task_id: task_id });
+            $('.Patterns').load('/teacher/pattern/show .Content'+ owner_patterns +'Patterns', { owner_patterns: owner_patterns });
+        });
+
+        $('.DestroyTask').click(function(){
+            var task_id = $(this).parents('.Task').attr('id');
+            var parent_id = $(this).parents('.ListTasks').attr('id');
+            $.post('/teacher/task/destroy.js', {task_id: task_id});
+            if(parent_id)
+                $('article').load('/teacher/task/show/'+parent_id+' section');
+            else
+                $('article').load('/teacher/task/index section');
+        });
+    }
+});

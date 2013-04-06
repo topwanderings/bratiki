@@ -1,0 +1,16 @@
+<article id="home">
+  <section id="main">
+    <table>
+      <thead>
+        <tr><th><%= format_date(@date) %></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Группы</td></tr>
+        <% @goups.each do |group| %>
+          <tr><td><%= group.number %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+</article>

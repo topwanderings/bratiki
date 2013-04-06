@@ -1,0 +1,62 @@
+<aside>
+  <%= form_tag do %>
+  <label>Расписание</label>
+  <%= select_tag(:teacher_id, options_from_collection_for_select(Teacher.all, :id, :half_name, (params[:teacher_id])?(params[:teacher_id]):(User.find(session[:user_id]).person.id)), :class => 'select') %>
+  <p class="button"><%= submit_tag("Показать") %></p>
+  <% end %>
+</aside>
+<article id="calendar">
+  <section id="main">
+    <h2 id="month">
+      <%= button_to("<", {:month => (@date.beginning_of_month-1).strftime("%m"), :year => (@date.beginning_of_month-1).strftime("%Y"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "back"}) %>
+      <%= format_date2 @date %>
+      <%= button_to(">", {:month => (@date.end_of_month+1).strftime("%m"), :year => (@date.beginning_of_month+1).strftime("%Y"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "forward"}) %>
+    </h2>
+    <%= calendar_for(@cases, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
+      <%= calendar.head('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье') %>
+      <% calendar.day(:day_method => :date_time) do |date, day| %>
+        <%= link_to(date.day, {:controller => '/teacher', :action => 'calendar', :day => date.day, :month => @date.month, :year => @date.year }, {:class => 'main'}) %>
+        <% if session[:user_id].to_s != params[:teacher_id].to_s && params[:teacher_id] %>
+          <% for _case in day %>
+              <%= content_tag 'a', :class => 'tooltip' do %>
+                        <% if  _case.note.scan("лекция").empty? %>
+                            <%= content_tag("span", _case.title, :class => 'name practice') <<  content_tag("pre") do  %>
+                                <%= _case.note %>
+                            <% end %>
+                        <% else %>
+                            <%= content_tag("span", _case.title, :class => 'name lecture') <<  content_tag("pre") do  %>
+                                <%= _case.note %>
+                            <% end %>
+                        <% end %>
+              <% end %>
+              <br/>
+            <% end %>
+        <% else %>
+          <% for _case in day %>
+            <% if _case.pair_id %>
+              <%= link_to({:controller => '/teacher/pair', :action => 'edit', :pair_id => _case.pair_id, :year => @date.year, :month => @date.month, :day => date.day}, {:class => 'tooltip'}) do %>
+                            <% if  _case.note.scan("лекция").empty? %>
+                                <%= content_tag("span", _case.title, :class => 'name practice') <<  content_tag("pre") do  %>
+                                    <%= _case.note %>
+                                <% end %>
+                            <% else %>
+                                <%= content_tag("span", _case.title, :class => 'name lecture') <<  content_tag("pre") do  %>
+                                    <%= _case.note %>
+                                <% end %>
+                            <% end %>
+              <% end %>
+              <br/>
+            <% else %>
+              <%= content_tag 'a', :class => 'tooltip' do %>
+                <%= content_tag("span", _case.title, :class => 'name task') <<  content_tag("pre") do  %>
+                  <%= _case.note %>
+                <% end %>
+              <% end %>
+              <br/>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,23 @@
+<div id="busy1" class="square">
+</div>
+
+<article>
+  <section id="main">
+    <%= form_tag({:action => :load}, :multipart => true) do %>
+      <p class="file_field">
+      <%= file_field_tag(:schedule, :size => "15px", :onchange => 'document.getElementById("path").value = this.value;')%>
+      </p>
+        <p class="field">
+          <%= text_field_tag(:path ,params[:path]) %>
+        </p>
+        <p class="file_button">
+          <%= submit_tag "Обзор" %>
+        </p>
+        <p class="button">
+        <%= submit_tag "Загрузить", :id => "load", :onclick => '$(".square").css("display", "block"); $("#busy1").activity();' %>
+      </p>  
+    <% end %>
+  </section>
+</article>
+
+

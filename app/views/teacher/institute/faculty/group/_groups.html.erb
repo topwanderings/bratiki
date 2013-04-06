@@ -1,0 +1,9 @@
+<%= table_for @groups do |t| %>
+    <%= t.body do |group| %>
+        <%= t.r do %>
+            <%= t.d link_to(group.number, { :controller => '/teacher/institute/faculty/group', :action => 'show', :group_id => group, :institute_id => params[:institute_id], :faculty_id => params[:faculty_id] }, {:method => 'get'}) %>
+        <% end %>
+    <% end %>
+<% end %>
+
+

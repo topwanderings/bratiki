@@ -1,0 +1,35 @@
+<% if @log %>
+    <article id="home">
+      <section id="main">
+        <div class='LogList'>
+          <div class='Header'>
+            <p>Заявки на регистрацию</p>
+          </div>
+          <div class='LogListContent'>
+            <div class='scrollable vertical'>
+              <div class='items'>
+                <% @log.each do |email, parameters| %>
+                  <div class='Log item'>
+                    <table>
+                    <% parameters.each do |key, parameter| %>
+                      <tr><td>
+                        <div class='NameParameter'>
+                          <p><%= key %></p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class='ValueParameter'>
+                          <p><%= parameter %></p>
+                        </div>
+                      </td></tr>
+                      <% end %>
+                    </table>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+<% end %>

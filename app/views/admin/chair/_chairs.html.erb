@@ -1,0 +1,20 @@
+<%= table_for @chairs do |t| %>
+    <%= t.body do |chair| %>
+        <%= t.r do %>
+            <%= t.d link_to(chair.name, { :controller => '/admin/chair', :action => 'edit', :chair_id => chair}, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("изменить", { :controller => '/admin/chair', :action => 'edit', :chair_id => chair}, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("удалить", { :controller => '/admin/chair', :action => 'destroy', :chair_id => chair}, {:class => 'destroy'}) %>
+        <% end %>
+        <%= t.r do %>
+          <%= t.d :class => 'td_list', :colspan => 3 do  %>
+            <%= link_to("Группы", { :controller => '/admin/chair/group', :action => 'index', :chair_id => chair }, {:class => 'list_name'}) %>
+              <% chair.groups.each do |group| %>
+                    <br/><%= link_to(group.number, {:controller => '/admin/chair/group', :action => 'edit', :chair_id => :chair, :group_id => group}, {:class => 'list'}) %>
+              <% end %>
+           <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+

@@ -1,0 +1,9 @@
+<%= table_for @pairs do |t| %>
+    <%= t.body do |pair| %>
+        <%= t.r do %>
+            <%= t.d link_to(pair.subject.name, { :controller => '/teacher/pair', :action => 'edit', :pair_id => pair, :year => params[:year], :month => params[:month], :day => params[:day] }, {:method => 'get', :class => 'item'}) %>
+            <%= t.d button_to("изменить", { :controller => '/teacher/pair', :action => 'edit', :pair_id => pair, :year => params[:year], :month => params[:month], :day => params[:day] }, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("удалить", { :controller => '/teacher/pair', :action => 'destroy', :pair_id => pair, :year => params[:year], :month => params[:month], :day => params[:day]}, {:class => 'destroy'}) %>
+        <% end %>
+    <% end %>
+<% end %>

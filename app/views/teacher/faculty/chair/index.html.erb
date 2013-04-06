@@ -1,0 +1,8 @@
+<article id="chairs">
+  <section id="main">
+    <h1>
+      <%=  link_to(Faculty.find(params[:faculty_id]).name, {:controller => '/teacher/faculty', :action => 'show', :faculty_id => params[:faculty_id]}, {:method => 'get'}) %> / <b><%=  link_to("Кафедры", {:controller => '/teacher/faculty/chair', :action => 'index', :faculty_id => params[:faculty_id]}) %></b>
+    </h1>
+    <%= render(:partial => 'chairs') %>
+  </section>
+</article>

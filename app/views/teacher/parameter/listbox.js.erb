@@ -1,0 +1,121 @@
+/*$(document).ready(function(){
+
+    var count= $('.ContentFormAddParameterEntity').length
+    if(!count)
+    {
+        $(".FormAddParameter").html("<div class='ContentFormAddParameterEntity'>\
+          <div class='SelectTypeParameter'>                                     \
+            <table><tr>                                                         \
+              <td>                                                              \
+                <div class='SelectTypeParameterText' activated='false'>         \
+                  <p>Текcт</p>                                                  \
+                </div>                                                          \
+              </td>                                                             \
+              <td>                                                              \
+                <div class='SelectTypeParameterDate' activated='false'>         \
+                  <p>Дата</p>                                                   \
+                </div>                                                          \
+              </td>                                                             \
+              <td>                                                              \
+                <div class='SelectTypeParameterEntity' activated='true'>        \
+                  <p>Сущность</p>                                               \
+                </div>                                                          \
+              </td>                                                             \
+            </tr></table>                                                       \
+          </div>                                                                \
+          <div class='ListBox'>                                                 \
+            <table>                                                             \
+              <tr>                                                              \
+                <td><div id='ListBoxAllItems'></div></td>                       \
+                  <td><div id='ListBoxSelectedItems'></div></td>                \
+                </tr>                                                           \
+            </table>                                                            \
+          </div>                                                                \
+        </div>");
+
+
+        listBoxAllItems = new JSListBox({'containerSelector':'ListBoxAllItems'});
+
+
+        var allItems = [];
+        <% if @list_entity %>
+            <% @list_entity.each do |key, value|%>
+                allItems.push(new JSListBox.Item("<%= value %>"));
+            <% end %>
+        <% end %>
+        listBoxAllItems.addItems(allItems);
+    }
+    else
+    {
+        alert('1 else')
+        var live_list_box = $('#ListBoxSelectedItems').length
+        if(live_list_box)
+        {
+            listBoxSelectedItems = new JSListBox({'containerSelector':'ListBoxSelectedItems'});
+
+            var selectItems = [];
+            <% if @list_name %>
+                <% @list_name.each do |name|%>
+                    selectItems.push(new JSListBox.Item("<%= name %>"));
+                    alert(1);
+                <% end %>
+            listBoxSelectedItems.addItem(selectItems);
+            <% end %>
+        }
+        else
+            alert('not find ListBoxSelectedItems');
+    }
+});
+*/
+
+$(document).ajaxSend(function(e, xhr, options) {
+    var token;
+    token = $("meta[name='csrf-token']").attr("content");
+    return xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+
+$(".FormAddParameter").html("<div class='ContentFormAddParameterEntity'>\
+          <div class='SelectTypeParameter'>                                     \
+            <table><tr>                                                         \
+              <td>                                                              \
+                <div class='SelectTypeParameterText' activated='false'>         \
+                  <p>Текcт</p>                                                  \
+                </div>                                                          \
+              </td>                                                             \
+              <td>                                                              \
+                <div class='SelectTypeParameterDate' activated='false'>         \
+                  <p>Дата</p>                                                   \
+                </div>                                                          \
+              </td>                                                             \
+              <td>                                                              \
+                <div class='SelectTypeParameterEntity' activated='true'>        \
+                  <p>Сущность</p>                                               \
+                </div>                                                          \
+              </td>                                                             \
+            </tr></table>                                                       \
+          </div>                                                                \
+          <div class='ListBox'>                                                 \
+            <table>                                                             \
+              <tr>                                                              \
+                <td><div id='ListBoxAllItems'>                                  \
+                <% if @list_entity %>                                           \
+                  <% @list_entity.each do |key, value|%>                        \
+                    <p><%= value %></p>                                         \
+                    <% end %>                                                   \
+                <% end %>                                                       \
+                </div></td>                                                     \
+                  <td><div id='ListBoxSelectedItems'>                           \
+                  <% if @list_name %>                                           \
+                    <% @list_name.each do |name|%>                              \
+                      <p><%= name %></p>                                        \
+                    <% end %>                                                   \
+                  <% end %>                                                     \
+                  </div></td>                                                   \
+                </tr>                                                           \
+            </table>                                                            \
+          </div>                                                                \
+        </div>");
+
+
+

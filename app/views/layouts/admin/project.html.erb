@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title> Проект </title>
+  <%= stylesheet_link_tag 'admin/project' %>
+  <%= javascript_include_tag "jquery-1.7.2.min", "scroll/jquery.tools.min", "scroll/project" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to("Назад", { :controller => '/admin', :action => 'home' }) %></li>
+      <li><%= link_to("Проект", { :controller => '/admin/project', :action => 'index' })%></li>
+      <li><%= link_to("Расписание", { :controller => '/admin/schedule', :action => 'index' })%></li>
+      <li><%= link_to("Пользователи", { :controller => '/admin/user', :action => 'index' })%></li>
+      <li><%= link_to("Институты", { :controller => '/admin/institute', :action => 'index' })%></li>
+      <li><%= link_to("Факультеты", { :controller => '/admin/faculty', :action => 'index' })%></li>
+      <li><%= link_to("Кафедры", { :controller => '/admin/chair', :action => 'index' })%></li>
+      <li><%= link_to("Группы", { :controller => '/admin/group', :action => 'index' })%></li>
+      <li><%= link_to("Словари", { :controller => '/admin/dictionary', :action => 'index' })%></li>
+      <li><%= link_to("Выход", {:controller => '/user/login', :action => 'logout'})%></li>
+    </ul>
+  </nav>​
+  <%= button_to("перезагрузить проект", {:controller => '/admin/project', :action => 'restart'},{:id => "restart", :confirm => "Перезагрузить проект?"}) %>
+</header>
+<%= yield %>
+</body>
+</html>

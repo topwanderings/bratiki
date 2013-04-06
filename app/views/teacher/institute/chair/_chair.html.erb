@@ -1,0 +1,14 @@
+<article>
+  <section id="main">
+    <h1>
+      <%=  link_to("Кафедры", {:controller => '/teacher/institute/chair', :action => 'index', :institute_id => params[:institute_id]}) %> / <b><%=  link_to(@chair.name, {:controller => '/teacher/institute/chair', :action => 'show', :institute_id => params[:institute_id], :chair_id => @chair}) %></b>
+    </h1>
+    <ul>
+      <li><label><%= @chair.name %></label></li>
+    </ul>
+    <ul>
+      <li><%= link_to("Группы", { :controller => '/teacher/institute/chair/group', :action => 'index', :institute_id => params[:institute_id], :chair_id => params[:chair_id] }) %></li>
+    </ul>
+  </section>
+</article>
+

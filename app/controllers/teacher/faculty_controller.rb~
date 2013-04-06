@@ -1,0 +1,9 @@
+class Teacher::FacultyController < ApplicationController
+  def show
+    @faculty = ActiveRecord::Base::Faculty.find(params[:faculty_id])
+  end
+
+  def index
+    @faculties = ActiveRecord::Base::Faculty.all
+  end
+end

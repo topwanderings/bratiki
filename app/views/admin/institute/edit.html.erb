@@ -1,0 +1,23 @@
+<article id="edit_institute">
+  <section id="main">
+    <h1>
+      <%=  link_to("Институты", {:controller => '/admin/institute', :action => 'index'}) %> / <b><%=  link_to(@institute.name, {:controller => '/admin/institute', :action => 'edit', :institute_id => params[:institute_id]}) %></b>
+    </h1>
+    <ul>
+      <li><%= link_to("Факультеты", { :controller => '/admin/institute/faculty', :action => 'index', :institute_id => params[:institute_id] }) %></li>
+      <li><%= link_to("Кафедры", { :controller => '/admin/institute/chair', :action => 'index', :institute_id => params[:institute_id] }) %></li>
+      <li><%= link_to("Группы", { :controller => '/admin/institute/group', :action => 'index', :institute_id => params[:institute_id] }) %></li>
+    </ul>
+    <%= form_tag({:action => "edit"}) do %>
+        <p class="field">
+          <label for="name" data-icon="u" > Название института </label>
+          <%= text_field_tag("name", @institute.name, {:placeholder => "ИКСИ"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,14 @@
+<html>
+<head>
+  <title>Регистрация</title>
+  <%= stylesheet_link_tag "chief/register" %>
+  <%= javascript_include_tag "jquery", "jquery_ujs", "jquery-ui", "chief/register" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<header>
+  <%= button_to("перезагрузить проект", {:controller => '/admin/project', :action => 'restart'},{:id => "restart", :confirm => "Перезагрузить проект?"}) %>
+</header>
+<%= yield %>
+</body>
+</html>

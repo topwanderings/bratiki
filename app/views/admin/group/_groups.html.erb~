@@ -1,0 +1,10 @@
+<% for group in @groups %>
+    <ul>
+      <li>
+        <%= link_to(group.number, { :controller => '/admin/chair', :action => 'edit', :id => chair }) %>
+      </li>
+      <li>
+        <%= link_to("удалить", { :controller => '/admin/chair', :action => 'destroy', :id => chair }) %>
+      </li>
+    </ul>
+<% end %>

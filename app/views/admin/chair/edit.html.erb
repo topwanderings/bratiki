@@ -1,0 +1,35 @@
+<article id="edit_chair">
+  <section id="main">
+    <h1>
+      <%=  link_to("Кафедры", {:controller => '/admin/chair', :action => 'index'}) %> / <b><%=  link_to(@chair.name, {:controller => '/admin/chair', :action => 'edit', :chair_id => @chair}) %></b>
+    </h1>
+    <ul>
+      <li><%= link_to("Группы", { :controller => '/admin/chair/group', :action => 'index', :chair_id => params[:chair_id] }) %></li>
+    </ul>
+    <%= form_tag({:action => "edit"}) do %>
+        <p class="field">
+          <label for="name" data-icon="u" > Название кафедры</label>
+          <%= text_field_tag("name", @chair.name, {:placeholder => "компьютерная безопасность"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <p class="field">
+          <label for="number" data-icon="u" > Номер кафедры </label>
+          <%= text_field_tag("number", @chair.number, {:placeholder => "731"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <% unless Faculty.all.empty? %>
+            <p>
+              <label for="faculty"> Факультет </label>
+              <%= select_tag(:faculty_id, options_from_collection_for_select(Faculty.all, :id, :name, @chair.faculty_id), {:class => "select", :id => "faculty", :prompt => "факультет"}) %>
+            </p>
+        <% end %>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>
+

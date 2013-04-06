@@ -1,0 +1,37 @@
+<article id="edit_pair">
+  <section id="main">
+    <%= form_tag({:action => "edit"}) do %>
+        <h1>
+          Изменить
+        </h1>
+
+        <p class="field">
+          <label for="object"> Название предмета </label>
+          <%= text_field_tag("object", @pair.object, {:placeholder => "Методы программирования"})  %>
+          <label for="object" id="error_object" class="error"><%= flash[:object] %></label>
+        </p>
+
+        <p class="field">
+          <label for="kind"> Тип занятия </label>
+          <%= text_field_tag("kind", @pair.kind, {:placeholder => "Лекция"})  %>
+          <label for="kind" id="error_kind" class="error"><%= flash[:kind] %></label>
+        </p>
+
+        <p class="field">
+          <label for="place"> Место проведения </label>
+          <%= text_field_tag("place", @pair.place, {:placeholder => "УНЦ-14"})  %>
+          <label for="place" id="error_place" class="error"><%= flash[:place] %></label>
+        </p>
+
+        <p class="field">
+          <label for="groups"> Группы </label>
+          <%= text_field_tag("group", @pair.group, {:placeholder => "7311, 7315"})  %>
+          <label for="group" id="error_group" class="error"><%= flash[:group] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

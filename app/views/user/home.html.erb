@@ -1,0 +1,33 @@
+<article>
+  <section id="main">
+    <h2><%= format_date(@date) %></h2>
+    <p>
+      <label>Пары</label>
+      <% unless @pairs.empty? %>
+        <%= table_for @pairs do |t| %>
+          <%= t.body do |pair| %>
+            <%= t.r do %>
+              <%= t.d pair.subject.name %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <span>Нет пар</span>
+      <% end %>
+    </p>
+    <p>
+      <label>Задачи</label>
+      <% unless @tasks.empty? %>
+        <%= table_for @tasks do |t| %>
+          <%= t.body do |task| %>
+            <%= t.r do %>
+              <%= t.d task.title %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <span>Нет задач</span>
+      <% end %>
+    </p>
+  </section>
+</article>

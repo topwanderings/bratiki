@@ -1,0 +1,9 @@
+<%= table_for @tasks do |t| %>
+    <%= t.body do |task| %>
+        <%= t.r do %>
+            <%= t.d link_to(task.title, { :controller => '/user/day/task', :action => 'edit', :task_id => task, :year => params[:year], :month => params[:month], :day => params[:day] }, {:method => 'get'}) %>
+            <%= t.d button_to("изменить", { :controller => '/user/day/task', :action => 'edit', :task_id => task, :year => params[:year], :month => params[:month], :day => params[:day] }, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("удалить", { :controller => '/user/day/task', :action => 'destroy', :institute_id => params[:institute_id], :faculty_id => faculty}, {:class => 'destroy'}) %>
+        <% end %>
+    <% end %>
+<% end %>

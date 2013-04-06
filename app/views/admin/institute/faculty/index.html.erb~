@@ -1,0 +1,8 @@
+<article id="faculties">
+  <section id="main">
+    <%= render(:partial => 'faculties') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/admin/institute/faculty', :action => 'new', :institute_id => paramsp:institute_id]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>

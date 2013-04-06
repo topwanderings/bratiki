@@ -1,0 +1,23 @@
+<article id="home">
+  <section id="main">
+    <div class ="half_name">
+      <%= User.find(session[:user_id]).person.half_name %>
+    </div>
+    <table>
+      <thead>
+        <tr><th><%= format_date(@date) %></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Пары</td></tr>
+        <% @pairs.each do |pair| %>
+          <tr><td><%= link_to(pair.subject.name, {:controller => '/teacher/pair', :action => 'edit', :pair_id => pair, :day => @date.day, :month => @date.month, :year => @date.year}) %></td></tr>
+        <% end %>
+        <tr><td>Задачи</td></tr>
+        <% @tasks.each do |task| %>
+          <tr><td><%= link_to(task.title, {:controller => '/teacher/task', :action => 'edit', :task_id => task, :day => @date.day, :month => @date.month, :year => @date.year}) %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+</article>

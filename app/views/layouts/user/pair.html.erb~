@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>Регистрация</title>
+  <%= stylesheet_link_tag "user/pair" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <%= button_to("перезагрузить проект", {:controller => '/admin/project', :action => 'restart'},{:id => "restart", :confirm => "Перезагрузить проект?"}) %>
+</header>
+<%= yield %>
+</body>
+</html>

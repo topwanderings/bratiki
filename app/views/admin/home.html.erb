@@ -1,0 +1,23 @@
+<% unless @users.empty? %>
+  <article id="home">
+    <section id="main">
+      <div class='NotActiveUsers'>
+        <% @users.each do |user| %>
+          <% person = Person.find(user.person_id) %>
+          <div class='User' id='<%= user.id %>'>
+            <table><tr>
+              <td>
+                <div class='UsersName'>
+                  <p><%= person.full_name %></p>
+                </div>
+              </td>
+              <td>
+                <div class='ActivateUser'></div>
+              </td>
+            </tr></table>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </article>
+<% end %>

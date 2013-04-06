@@ -1,0 +1,8 @@
+<%= table_for @faculties do |t| %>
+    <%= t.body do |institute| %>
+        <%= t.r do %>
+            <%= t.d button_to("удалить", { :controller => '/admin/institute', :action => 'destroy', :institute_id => institute}, {:class => 'destroy'}) %>
+          <%= t.d link_to(institute.name, { :controller => '/admin/institute', :action => 'show', :institute_id => institute }) %>
+        <% end %>
+    <% end %>
+<% end %>

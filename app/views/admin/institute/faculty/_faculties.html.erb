@@ -1,0 +1,17 @@
+<%= table_for @faculties do |t| %>
+    <%= t.body do |faculty| %>
+        <%= t.r do %>
+            <%= t.d link_to(faculty.name, { :controller => '/admin/institute/faculty', :action => 'edit', :institute_id => params[:institute_id], :faculty_id => faculty }, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("изменить", { :controller => '/admin/institute/faculty', :action => 'edit', :institute_id => params[:institute_id], :faculty_id => faculty}, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("удалить", { :controller => '/admin/institute/faculty', :action => 'destroy', :institute_id => params[:institute_id], :faculty_id => faculty}, {:class => 'destroy'}) %>
+        <% end %>
+        <%= t.r do %>
+          <%= t.d :class => 'td_list' do  %>
+            <%= link_to("Кафедры", { :controller => '/admin/institute/faculty/chair', :action => 'index', :institute_id => params[:institute_id], :faculty_id => faculty}, {:class => 'list_name'}) %>
+            <% faculty.chairs.each do |chair| %>
+              <br/><%= link_to(chair.name , {:controller => '/admin/institute/faculty/chair', :action => 'edit', :institute_id => params[:institute_id],  :faculty_id => faculty, :chair_id => chair}, {:class => 'list'}) %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= table_for @users do |t| %>
+  <%= t.body do |user| %>
+    <%= t.r do %>
+      <%= t.d link_to(sprintf("%s %s %s",user.person.last_name, user.person.first_name, user.person.middle_name), { :controller => '/admin/user', :action => 'edit', :id => user }) %>
+      <% if user.id != 1 %>
+        <%= t.d button_to("изменить", { :controller => '/admin/user', :action => 'edit', :id => user, :method => :get}, {:class => 'edit'}) %>
+        <% if !user.activated %>
+          <%= t.d button_to("активировать", { :controller => '/admin/user', :action => 'activate', :id => user }, {:class => 'activate'}) %>
+        <% end %>
+        <%= t.d button_to("удалить", { :controller => '/admin/user', :action => 'destroy', :id => user}, {:class => 'destroy'}) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

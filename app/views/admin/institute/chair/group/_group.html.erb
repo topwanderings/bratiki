@@ -1,0 +1,10 @@
+<article>
+  <section id="main">
+    <ul>
+      <li><%= button_to("изменить", {:controller => '/admin/institute/chair/group', :action => 'edit', :chair_id => params[:chair_id], :group_id => params[:group_id] }, {:method => :get, :class => "edit"})  %></li>
+      <li><label><%= @group.number %></label></li>
+    </ul>
+  </section>
+</article>
+
+

@@ -1,0 +1,44 @@
+<article id="edit_pair">
+  <section id="main">
+    <h1>
+      <%=  link_to("Пары", {:controller => '/teacher/pair', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %> / <b><%=  link_to(@pair.subject.name, {:controller => '/teacher/pair', :action => 'edit', :pair_id => params[:pair_id], :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+    <h2>Журналы</h2>
+    <ul><% @groups.each do |group| %>
+          <li><%= link_to(group.number , {:controller => '/teacher', :action => 'journal', :group_id => group, :subject_id => @pair.subject}) %></li>
+      <% end %>
+    </ul>
+    <%= form_tag({:action => "edit"}) do %>
+        <p>
+          <label for="object"> Предмет </label>
+          <%= select_tag(:subject, options_from_collection_for_select(Subject.all, :id, :name, @pair.subject_id), {:class => "select", :id => "subject", :prompt => "предмет"}) %>
+        </p>
+
+        <p class="field">
+          <label for="kind"> Тип занятия </label>
+          <%= text_field_tag("pair_type", @pair.pair_type, {:placeholder => "Лекция"})  %>
+          <label for="kind" id="error_kind" class="error"><%= flash[:pair_type] %></label>
+        </p>
+
+        <p class="field">
+          <label for="place"> Место проведения </label>
+          <%= text_field_tag("place", @pair.place, {:placeholder => "УНЦ-14"})  %>
+          <label for="place" id="error_place" class="error"><%= flash[:place] %></label>
+        </p>
+
+        <p>
+          <label for="groups"> Группы </label>
+          <%= select_tag(:groups, options_from_collection_for_select(Group.all, :id, :number, @pair.groups.collect{|group| group.id}), {:size => 5, :multiple => true}) %>
+          <label for="group" id="error_group" class="error"><%= flash[:group] %></label>
+        </p>
+
+        <p>
+          <label> Время </label>
+          <%= select_datetime(@pair.date_time) %>
+        </p>
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

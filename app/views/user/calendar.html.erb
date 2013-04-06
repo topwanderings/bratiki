@@ -1,0 +1,37 @@
+<aside>
+  <%= form_tag do %>
+  <label>Выбор преподавателя</label>
+  <%= select_tag(:teacher_id, options_from_collection_for_select(User.all, :id, :full_name, params[:teacher_id]), :class => 'select') %>
+  <p class="button"><%= submit_tag("Показать") %></p>
+  <% end %>
+</aside>
+<article id="calendar">
+  <section id="main">
+    <h2 id="month">
+      <%= button_to("<", {:month => (@date.beginning_of_month-1).strftime("%Y-%m"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "back"}) %>
+      <%= format_date2 @date %>
+      <%= button_to(">", {:month => (@date.end_of_month+1).strftime("%Y-%m"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "forward"}) %>
+    </h2>
+    <%= calendar_for(@cases, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
+      <%= calendar.head('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье') %>
+      <% calendar.day(:day_method => :date_time) do |date, day| %>
+        <%= link_to(date.day, {:controller => '/user/day', :action => 'index', :day => date.day, :month => @date.month, :year => @date.year }, {:class => 'main'}) %>
+        <% for _case in day %>
+          <% if _case.pair_id %>
+            <%= link_to({:controller => '/user/day/pair', :action => 'edit', :pair_id => _case.pair_id, :year => @date.year, :month => @date.month, :day => date.day}, {:class => 'tooltip'}) do %>
+              <%= content_tag("span", _case.title, :class => 'name') <<  content_tag("pre") do  %>
+                <%= _case.note %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to({:controller => '/user/day/task', :action => 'edit', :task_id => _case.task_id, :year => @date.year, :month => @date.month, :day => date.day}, {:class => 'tooltip'}) do %>
+              <%= content_tag("span", _case.title, :class => 'name') <<  content_tag("pre") do  %>
+                <%= _case.note %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+</article>

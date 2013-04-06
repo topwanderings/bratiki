@@ -1,0 +1,31 @@
+<article id="journal">
+  <section id="main">
+        <%= table_for @students do |t| %>
+            <%= t.head do %>
+                <%= t.r do %>
+                    <%= t.h [@subject.name, @group.number].join(' / '), :class => 'subject_group' %>
+                    <% @pairs.each do |pair| %>
+                        <%= t.h content_tag('label', pair.date_time.strftime("%d.%m")) %>
+                    <% end %>
+                <% end %>
+            <% end %>
+            <%= t.body do |student| %>
+                <%= t.r do %>
+                    <%= t.d student.full_name, :class => 'student' %>
+                    <% @pairs.each do |pair| %>
+                        <% grade =  Grade.where(:pair_id => pair.id, :student_id => student.id).first %>
+                        <%= t.d (grade)?(grade.mark):("") %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+  </section>
+</article>
+
+<article id="select_subject_and_group">
+  <%= form_tag(:action => 'journal') do %>
+      <label>Предмет</label>
+      <%= select_tag(:n_subject_id, options_from_collection_for_select(@subjects, :id, :name, (params[:subject_id])), :class => 'select') %>
+      <p class="button"><%= submit_tag("Показать") %></p>
+  <% end %>
+</article>

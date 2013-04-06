@@ -1,0 +1,25 @@
+<article id="edit_group">
+  <section id="main">
+    <h1>
+      <%=  link_to("Группы", {:controller => '/admin/faculty/group', :action => 'index', :faculty_id => params[:faculty_id]}) %> / <b><%=  link_to(Group.find(params[:group_id]).number, {:controller => '/admin/faculty/group', :action => 'edit', :faculty_id => params[:faculty_id], :group_id => params[:group_id]}, {:method => 'get'}) %></b>
+    </h1>
+    <%= form_tag({:action => "edit", :faculty_id => params[:faculty_id]}) do %>
+        <p class="field">
+          <label for="number" data-icon="u" > Номер группы </label>
+          <%= text_field_tag("number", @group.number, {:placeholder => "7315"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <% unless Faculty.find(params[:faculty_id]).chairs.empty? %>
+            <p>
+              <label for="chair"> Кафедра </label>
+              <%= select_tag(:chair_id, options_from_collection_for_select(Faculty.find(params[:faculty_id]).chairs, :id, :name, @chair_id), {:class => "select", :id => "chair", :prompt => "кафедра"}) %>
+            </p>
+        <% end %>
+
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,108 @@
+<div class='ContentFormAddParameterTypeText'>
+  <div class='SelectTypeParameter'>
+    <table><tr>
+      <td>
+        <div class='SelectTypeParameterText' activated='true'>
+          <p>Текcт</p>
+        </div>
+      </td>
+      <td>
+        <div class='SelectTypeParameterDate' activated='false'>
+          <p>Дата</p>
+        </div>
+      </td>
+      <td>
+        <div class='SelectTypeParameterEntity' activated='false'>
+          <p>Сущность</p>
+        </div>
+      </td>
+    </tr></table>
+  </div>
+  <div class= 'SelectParameter'>
+    <div class='SelectNameParameter'>
+      <label>
+        <p>Название:</p>
+      </label>
+      <input type='text'>
+    </div>
+    <div class='SelectValueParameter'>
+      <label>
+        <p>Значение:</p>
+      </label>
+      <input type='text'>
+    </div>
+  </div>
+</div>
+
+<div class='ContentFormAddParameterTypeDate'>
+  <div class='SelectTypeParameter'>
+    <table><tr>
+      <td>
+        <div class='SelectTypeParameterText' activated='false'>
+          <p>Текcт</p>
+        </div>
+      </td>
+      <td>
+        <div class='SelectTypeParameterDate' activated='true'>
+          <p>Дата</p>
+        </div>
+      </td>
+      <td>
+        <div class='SelectTypeParameterEntity' activated='false'>
+          <p>Сущность</p>
+        </div>
+      </td>
+    </tr></table>
+  </div>
+  <div class= 'SelectParameter'>
+    <div class='SelectNameParameter'>
+      <label>
+        <p>Название:</p>
+      </label>
+      <input type='text'>
+    </div>
+    <div class='SelectValueParameter'>
+      <label>
+        <p>Значение:</p>
+      </label>
+      <input type='text' id='Date'>
+    </div>
+  </div>
+</div>
+
+<div class='ContentFormAddParameterEntity'>
+<div class='SelectTypeParameter'>
+  <table><tr>
+    <td>
+      <div class='SelectTypeParameterText' activated='false'>
+        <p>Текcт</p>
+      </div>
+    </td>
+    <td>
+      <div class='SelectTypeParameterDate' activated='false'>
+        <p>Дата</p>
+      </div>
+    </td>
+    <td>
+      <div class='SelectTypeParameterEntity' activated='true'>
+        <p>Сущность</p>
+      </div>
+    </td>
+  </tr></table>
+</div>
+<div class='ListBox'>
+  <table>
+    <tr>
+      <td><div id='ListBoxAllItems'>
+        <% if @list_entity %>
+          <% @list_entity.each do |key, value|%>
+            <li><%= value %></li>
+          <% end %>
+        <% end %>
+      </div></td>
+      <td><div id='ListBoxSelectedItems'></div></td>
+    </tr>
+  </table>
+</div>
+</div>");
+

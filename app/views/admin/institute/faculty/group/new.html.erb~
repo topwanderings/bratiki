@@ -1,0 +1,26 @@
+<article id="new_group">
+  <section id="main">
+    <%= form_tag({:action => "new", :faculty_id => params[:faculty_id]}) do %>
+        <h1>
+          Добавить
+        </h1>
+
+        <p class="field">
+          <label for="number" data-icon="e" > Номер группы</label>
+          <%= text_field_tag("number", params[:number], {:placeholder => "7315"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <% unless Faculty.find(params[:faculty_id]).chairs.empty? %>
+          <p>
+            <label for="chair"> Кафедра </label>
+            <%= select_tag(:chair_id, options_from_collection_for_select(Faculty.find(params[:faculty_id]).chairs, :id, :name, params[:chair_id]), {:class => "select", :id => "chair", :prompt => "кафедра"}) %>
+          </p>
+        <% end %>
+
+        <p class="button">
+          <%= submit_tag "Добавить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

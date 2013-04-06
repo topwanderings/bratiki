@@ -1,0 +1,22 @@
+ИБ 1 курс:
+  id: 1
+  number: 1
+  faculty_id: 6
+ИБ 2 курс:
+  id: 2
+  number: 2
+  faculty_id: 6
+ИБ 3 курс:
+  id: 3
+  number: 3
+  faculty_id: 6
+ИБ 4 курс:
+  id: 4
+  number: 4
+  faculty_id: 6
+ИБ 5 курс:
+  id: 5
+  number: 5
+  faculty_id: 6
+
+          

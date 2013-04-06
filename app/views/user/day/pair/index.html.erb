@@ -1,0 +1,11 @@
+<article id="pairs">
+  <section id="main">
+    <h1>
+      <%=  link_to(format_date(@date1), {:controller => '/user/day', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}, {:method => 'get'}) %> / <b><%=  link_to("Пары", {:controller => '/user/day/pair', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+    <%= render(:partial => 'pairs') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/user/day/pair', :action => 'new', :year => params[:year], :month => params[:month], :day => params[:day]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>

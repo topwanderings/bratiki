@@ -1,0 +1,10 @@
+<%= table_for @posts do |t| %>
+    <%= t.body do |post| %>
+        <%= t.r do %>
+            <%= t.d link_to(military_rank.name, { :controller => '/admin/dictionary/military_rank', :action => 'edit', :id => military_rank}, {:method => 'get'}) %>
+            <%= t.d button_to("изменить", { :controller => '/admin/dictionary/military_rank', :action => 'edit', :id => military_rank}, {:method => 'get', :class => 'edit'}) %>
+            <%= t.d button_to("удалить", { :controller => '/admin/dictionary/military_rank', :action => 'destroy', :id => military_rank}, {:class => 'destroy'}) %>
+        <% end %>
+    <% end %>
+<% end %>
+

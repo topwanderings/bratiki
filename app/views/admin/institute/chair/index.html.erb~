@@ -1,0 +1,8 @@
+<article id="chairs">
+  <section id="main">
+    <%= render(:partial => 'chairs') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/admin/institute/chair', :action => 'new'}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>

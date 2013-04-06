@@ -1,0 +1,39 @@
+<div class='SelectOwnerPatterns'>
+  <table><tr>
+    <td>
+      <div class='SelectSystemPatterns'>
+        <p>Системные образцы</p>
+      </div>
+    </td>
+    <td>
+      <div class='SelectUsersPatterns'>
+        <p>Мои образцы</p>
+      </div>
+    <td>
+  </tr></table>
+</div>
+
+<div class='ListPatterns' id='System'>
+  <div class='ContentListPatterns'>
+    <div class='Finder'>
+      <input type='text'>
+    </div>
+    <div class='Patterns'>
+      <div class='ContentPatterns'>
+        <% if @names_pattern %>
+          <% @names_pattern.each do |pattern| %>
+            <div class = 'Pattern' id = '<%= pattern[:id] %>'>
+              <table><tr>
+                <td>
+                  <div class='NamePattern'>
+                    <p><%= pattern[:name] %></p>
+                  </div>
+                </td>
+              </tr></table>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>    

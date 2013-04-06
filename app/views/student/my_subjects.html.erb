@@ -1,0 +1,25 @@
+<article id="my_subjects">
+  <section id="main">
+    <%= table_for @subjects do |t| %>
+      <%= t.head do %>
+        <%= t.h "Мои предметы" %>
+      <% end %>
+      <%= t.body do |subject| %>
+        <%= t.r do %>
+          <%= t.d do %>
+            <%= subject.name %>
+            <% group = UStudent.find(session[:user_id]).person.group %>
+            <% pairs = group.pairs.find_all{|pair| pair.subject_id == subject.id} %>
+            <% teachers = [] %>
+            <% pairs.collect do |pair| %>
+                <% teachers << pair.teacher %>
+            <% end %>
+            <% teachers.uniq.each do |teacher| %>
+              <br/><%= link_to(teacher.half_name, {:controller => '/student', :action => 'journal', :subject_id => subject, :group_id => group}) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </section>
+</article>

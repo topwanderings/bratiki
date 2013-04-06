@@ -1,0 +1,10 @@
+#coding: UTF-8
+class Teacher::Institute::GroupController < ApplicationController
+  def show
+    @group = Group.find(params[:group_id])
+  end
+
+  def index
+    @groups = ActiveRecord::Base::Institute.find(params[:institute_id]).groups
+  end
+end

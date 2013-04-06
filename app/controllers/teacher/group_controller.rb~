@@ -1,0 +1,11 @@
+#coding: utf-8
+class Teacher::GroupController < ApplicationController
+  def index
+    @groups = Group.all
+  end
+
+  def show
+    @group = Group.find(params[:group_id])
+  end
+
+end

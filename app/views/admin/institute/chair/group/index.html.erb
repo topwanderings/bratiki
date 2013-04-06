@@ -1,0 +1,12 @@
+<article id="groups">
+  <section id="main">
+    <h1>
+      <%=  link_to(Chair.find(params[:chair_id]).name, {:controller => '/admin/institute/chair', :action => 'edit', :institute_id => params[:institute_id], :chair_id => params[:chair_id]}, {:method => 'get'}) %> / <b><%=  link_to("Группы", {:controller => '/admin/institute/chair/group', :action => 'index', :institute_id => params[:institute_id], :chair_id => params[:chair_id]}) %></b>
+    </h1>
+    <%= render(:partial => 'groups') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => 'admin/institute/chair/group', :action => 'new', :institute_id => params[:institute_id], :chair_id => params[:chair_id]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>
+

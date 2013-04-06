@@ -1,0 +1,26 @@
+<article id="new_faculty">
+  <section id="main">
+    <%= form_tag({:action => "new"}) do %>
+        <h1>
+          Добавить
+        </h1>
+
+        <p class="field">
+          <label for="name" data-icon="u" > Название </label>
+          <%= text_field_tag("name", params[:name], {:placeholder => "информационная безопасность"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <% unless Institute.all.empty? %>
+            <p>
+              <label for="institute"> Институт </label>
+              <%= select_tag(:institute_id, options_from_collection_for_select(Institute.all, :id, :name, params[:institute_id]), {:class => "select", :id => "institute", :prompt => "институт"}) %>
+            </p>
+        <% end %>
+
+        <p class="button">
+          <%= submit_tag "Добавить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

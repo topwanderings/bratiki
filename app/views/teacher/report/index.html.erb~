@@ -1,0 +1,9 @@
+<article>
+  <section id="main">
+    <%= form_tag do %>
+      <label>Расписание</label>
+      <%= select_tag(:document_id, options_from_collection_for_select(Document.all, :id, :title), :class => 'select') %>
+      <p class="button"><%= submit_tag("Скачать") %></p>
+    <% end %>
+  </section>
+</article>

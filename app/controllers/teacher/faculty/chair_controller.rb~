@@ -1,0 +1,10 @@
+#coding: UTF-8
+class Teacher::Faculty::ChairController < ApplicationController
+  def show
+    @chair = Chair.find(params[:chair_id])
+  end
+
+  def index
+    @chairs = ActiveRecord::Base::Faculty.find(params[:faculty_id]).chairs
+  end
+end

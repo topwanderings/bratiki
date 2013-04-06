@@ -1,0 +1,11 @@
+<article id="chairs">
+  <section id="main">
+    <h1>
+      <%=  link_to(Institute.find(params[:institute_id]).name, {:controller => '/admin/institute', :action => 'edit', :institute_id => params[:institute_id]}, {:method => 'get'}) %> / <b><%=  link_to("Кафедры", {:controller => '/admin/institute/chair', :action => 'index', :institute_id => params[:institute_id]}) %></b>
+    </h1>
+    <%= render(:partial => 'chairs') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/admin/institute/chair', :action => 'new'}, {:institute_id => params[:institute_id], :method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>

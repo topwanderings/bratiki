@@ -1,0 +1,29 @@
+<article id="edit_task">
+  <section id="main">
+    <h1>
+      <%=  link_to("Задачи", {:controller => '/user/day/task', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %> / <b><%=  link_to(@task.title, {:controller => '/user/day/task', :action => 'edit', :task_id => params[:task_id], :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+    <%= form_tag({:action => "edit"}) do %>
+        <p class="field">
+          <label for="title"> Заголовок </label>
+          <%= text_field_tag("title", @task.title, {:placeholder => "Заголовок"})  %>
+          <label for="title" id="error_title" class="error"><%= flash[:title] %></label>
+        </p>
+
+        <p class="field">
+          <label for="title"> Описание </label>
+          <%= text_area_tag("note", @task.note)  %>
+          <label for="note" id="error_note" class="error"><%= flash[:note] %></label>
+        </p>
+
+        <p>
+          <label for="date"> Время </label>
+          <%= select_datetime(@task.date_time, {}, {:class => "select2"})  %>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,9 @@
+<article id="groups">
+  <section id="main">
+    <%= render(:partial => 'groups') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => 'admin/institute/faculty/chair/group', :action => 'new', :faculty_id => params[:faculty_id], :chair_id => params[:chair_id]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>
+

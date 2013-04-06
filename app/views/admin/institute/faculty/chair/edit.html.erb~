@@ -1,0 +1,25 @@
+<article id="edit_chair">
+  <section id="main">
+    <%= form_tag({:action => "edit", :faculty_id => params[:faculty_id]}) do %>
+        <h1>
+          Изменить
+        </h1>
+
+        <p class="field">
+          <label for="name" data-icon="u" > Название </label>
+          <%= text_field_tag("name", @chair.name, {:placeholder => "компьютерная безопасность"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <p class="field">
+          <label for="number" data-icon="u" > Номер </label>
+          <%= text_field_tag("number", @chair.number, {:placeholder => "731"})  %>
+          <label for="number" id="error_number" class="error"><%= flash[:number] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

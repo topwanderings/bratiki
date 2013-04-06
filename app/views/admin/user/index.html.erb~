@@ -1,0 +1,10 @@
+<article id="users">
+  <section id="main">
+    <%= render(:partial => 'users', :locals => {:users => @users} ) %>
+    <ul>
+      <li>
+        <%= link_to("добавить", { :controller => 'admin/user', :action => 'new'}) %>
+      </li>
+    </ul>
+  </section>
+</article>

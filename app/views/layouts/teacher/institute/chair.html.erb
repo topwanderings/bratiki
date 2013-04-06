@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <title> Кафедры </title>
+  <%= stylesheet_link_tag "teacher/institute/chair" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to("Домашняя", {:controller => '/teacher', :action => 'home'}) %></li>
+      <li><%= link_to("Институты", { :controller => '/teacher/institute', :action => 'index' })%></li>
+      <li><%= link_to("Факультеты", { :controller => '/teacher/faculty', :action => 'index' })%></li>
+      <li><%= link_to("Кафедры", { :controller => '/teacher/chair', :action => 'index' })%></li>
+      <li><%= link_to("Группы", { :controller => '/teacher/group', :action => 'index' })%></li>
+      <li><%= link_to("Мои дисциплины", {:controller => '/teacher', :action => 'my_subjects'}) %></li>
+      <li><%= link_to("Календарь", {:controller => '/teacher', :action => 'calendar', :month => params[:month], :year => params[:year], :day => nil})%></li>
+      <li><%= link_to("Рапорта", {:controller => '/teacher/report', :action => 'index'}) %></li>
+      <li><%= link_to("Планировщик задач", {:controller => '/teacher/task', :action => 'index'}) %></li>
+      <li><%= link_to("Выход", {:controller => '/user/login', :action => 'logout'})%></li>
+    </ul>
+  </nav>
+</header>
+<%= yield %>
+</body>
+</html>

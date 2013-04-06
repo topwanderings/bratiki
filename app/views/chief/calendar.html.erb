@@ -1,0 +1,40 @@
+<aside>
+  <%= form_tag do %>
+      <label>Группа</label>
+      <%= select_tag(:group_id, options_from_collection_for_select(@groups, :id, :number, @group.id), :class => 'select') %>
+      <p class="button"><%= submit_tag("Показать") %></p>
+  <% end %>
+</aside>
+<article id="calendar">
+  <section id="main">
+    <h2 id="month">
+      <%= button_to("<", {:month => (@date.beginning_of_month-1).strftime("%m"), :year => (@date.beginning_of_month-1).strftime("%Y"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "back"}) %>
+      <%= format_date2 @date %>
+      <%= button_to(">", {:month => (@date.end_of_month+1).strftime("%m"), :year => (@date.beginning_of_month+1).strftime("%Y"), :teacher_id => params[:teacher_id]}, {:class => "row", :id => "forward"}) %>
+    </h2>
+    <%= calendar_for(@cases, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
+      <%= calendar.head('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье') %>
+      <% calendar.day(:day_method => :date_time) do |date, day| %>
+        <%= date.day %>
+          <% for _case in day %>
+            <br/>
+            <% if _case.pair_id %>
+              <%= content_tag 'a', :class => 'tooltip' do %>
+                <%= content_tag("span", _case.title, :class => 'name') <<  content_tag("pre") do  %>
+                  <%= _case.note %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= content_tag 'a', :class => 'tooltip' do %>
+                <%= content_tag("span", _case.title, :class => 'name') <<  content_tag("pre") do  %>
+                  <%= _case.note %>
+                <% end %>
+              <% end %>
+            <% end %>
+
+          <% end %>
+
+      <% end %>
+    <% end %>
+  </section>
+</article>

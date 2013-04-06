@@ -1,0 +1,14 @@
+<article>
+  <section id="main">
+    <ul>
+      <li><%= button_to("изменить", {:controller => '/admin/institute/faculty/chair', :action => 'edit', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => params[:chair_id] }, {:method => :get, :class => "edit"})  %></li>
+      <li><label><%= @chair.name %></label></li>
+    </ul>
+    <ul>
+      <li><%= link_to("Группы", { :controller => '/admin/institute/faculty/chair/group', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => params[:chair_id] }) %></li>
+    </ul>
+  </section>
+</article>
+
+
+

@@ -1,0 +1,40 @@
+<div class='Patterns'>
+  <div class='ContentUsersPatterns'>
+    <% if @names_pattern %>
+      <% @names_pattern.each do |pattern| %>
+        <div class = 'Pattern' id = '<%= pattern[:id] %>'>
+          <table><tr>
+            <td>
+              <div class='NamePattern'>
+                <p><%= pattern[:name] %></p>
+              </div>
+            </td>
+            <td>
+              <div class='DestroyUsersPattern'></div>
+            </td>
+          </tr></table>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class='Patterns'>
+  <div class='ContentSystemPatterns'>
+    <% if @names_pattern %>
+        <% @names_pattern.each do |pattern| %>
+            <div class = 'Pattern' id = '<%= pattern[:id] %>'>
+              <table><tr>
+                <td>
+                  <div class='NamePattern'>
+                    <p><%= pattern[:name] %></p>
+                  </div>
+                </td>
+                <td>
+                </td>
+              </tr></table>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

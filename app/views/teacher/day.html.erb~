@@ -1,0 +1,11 @@
+<article>
+  <section id="main">
+    <h1>
+      <%=  link_to("Календарь", {:controller => '/teacher', :action => 'calendar'}) %> / <b><%=  link_to(format_date(@date1), {:controller => '/teacher', :action => 'calendar', :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+    <ul>
+    <li><%= link_to("Пары", {:controller => '/teacher/pair', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %></li>
+    <li><%= link_to("Задачи", {:controller => '/teacher/task', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %></li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,8 @@
+<article id="index">
+  <section id="main">
+    <ul>
+      <li><%= link_to("Удалить расписание", { :controller => '/admin/schedule', :action => 'destroy' })%></li>
+      <li><%= link_to("Загрузить расписание, { :controller => '/admin/schedule', :action => 'load' })%></li>
+    </ul>
+  </section>
+</article>

@@ -1,0 +1,2 @@
+<label for="group">Группа</label>
+<%= select_tag(:n_group_id, options_from_collection_for_select(groups, :id, :number, params[:group_id]), {:class => "select", :id => "group"}) %>

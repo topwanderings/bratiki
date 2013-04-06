@@ -1,0 +1,108 @@
+$(document).ajaxSend(function(e, xhr, options) {
+    var token;
+    token = $("meta[name='csrf-token']").attr("content");
+    return xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+
+$("<div class='FormAddParameter' id='<%= params[:task_id] %>'>              \
+    <div class='ContentFormAddParameterTypeText'>                           \
+      <div class='SelectTypeParameter'>                                     \
+        <table><tr>                                                         \
+          <td>                                                              \
+            <div class='SelectTypeParameterText' activated='true'>          \
+              <p>Текcт</p>                                                  \
+            </div>                                                          \
+          </td>                                                             \
+          <td>                                                              \
+            <div class='SelectTypeParameterDate' activated='false'>         \
+              <p>Дата</p>                                                   \
+            </div>                                                          \
+          </td>                                                             \
+          <td>                                                              \
+            <div class='SelectTypeParameterEntity' activated='false'>       \
+              <p>Сущность</p>                                               \
+            </div>                                                          \
+          </td>                                                             \
+        </tr></table>                                                       \
+      </div>                                                                \
+      <div class= 'SelectParameter'>                                        \
+        <div class='SelectNameParameter'>                                   \
+          <label>                                                           \
+            <p>Название:</p>                                                \
+          </label>                                                          \
+          <input type='text'>                                               \
+        </div>                                                              \
+        <div class='SelectValueParameter'>                                  \
+          <label>                                                           \
+            <p>Значение:</p>                                                \
+          </label>                                                          \
+           <input type='text'>                                              \
+        </div>                                                              \
+      </div>                                                                \
+    </div>                                                                  \
+   </div>                                                                   \
+").insertBefore('.AddParameter');
+
+$(".FormAddParameter").dialog({
+    buttons: {
+        'ok': function(e){
+            var task_id = $(".ListTasks").attr("id");
+            var name = $(".SelectNameParameter :text").val();
+            var value = $(".SelectValueParameter :text").val();
+            var str = $(".SelectTypeParameter [activated='true']").attr("class");
+            var entity = str.substring(19, str.length);
+            $(this).dialog('destroy');
+            $(".FormAddParameter").detach();
+            $.post('/teacher/parameter/add.js', { task_id: task_id, name: name, value: value, entity: entity });
+            $("article").load("/teacher/task/show/"+task_id+" section");
+        }
+    },
+    close: function(event, ui){
+        $(".FormAddParameter").dialog('destroy');
+        $(".FormAddParameter").detach();
+    },
+    closeText: 'x',
+    modal: true,
+    closeOnEscape: true,
+    width: 600,
+    height: 500,
+    show: 'slide',
+    title: 'Добавить параметр'
+});
+
+$(document).on('mouseenter', '#Date', function(){
+    $(this).datepicker();
+});
+
+$(document).on('click', '.SelectTypeParameterText', function(){
+    $(".FormAddParameter").load("/teacher/parameter/constructor .ContentFormAddParameterTypeText");
+});
+
+$(document).on('click', '.SelectTypeParameterDate', function(){
+    $(".FormAddParameter").load("/teacher/parameter/constructor .ContentFormAddParameterTypeDate");
+});
+
+$(document).on('click', '.SelectTypeParameterEntity', function(){
+    $.post("/teacher/parameter/listbox.js");
+});
+
+$(document).on('click', '#ListBoxAllItems p', function()
+{
+    var name_entity = $(this).html();
+    $.post('/teacher/parameter/listbox.js', { name_entity: name_entity });
+    $('.FormAddParameter').attr('id', name_entity);
+});
+
+$(document).on('click', '#ListBoxSelectedItems p', function()
+{
+    var task_id = $(".ListTasks").attr("id");
+    var name = $('.FormAddParameter').attr("id");
+    var value = $(this).html();
+    var str = $(".SelectTypeParameter [activated='true']").attr("class");
+    var entity = str.substring(19, str.length);
+    $(".FormAddParameter").dialog('destroy');
+    $(".FormAddParameter").detach();
+    $.post('/teacher/parameter/add.js', { task_id: task_id, name: name, value: value, entity: entity });
+    $("article").load("/teacher/task/show/"+task_id+" section");
+});

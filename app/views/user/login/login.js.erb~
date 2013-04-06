@@ -1,0 +1,35 @@
+if (<%= error %>)
+{
+  if (<%= message == "empty_email" %>) 
+  {
+    $("#error_email").text("введите email");
+    $("#email").css("background", "rgba(255, 0, 0, 0.2)");
+    $("#email").focus();
+  } 
+  else if (<%= message == "wrong_email" %>) 
+  {
+    $("#email").css("background", "rgba(255, 0, 0, 0.2)");
+    $("#error_email").text("пользователь с таким email-ом не зарегистрирован");
+    $("#email").focus();
+  }
+  else if (<%= message == "empty_password" %>) 
+  {
+    $("#password").css("background", "rgba(255, 0, 0, 0.2)");
+    $("#error_password").text("введите пароль");
+    $("#password").focus();
+  }
+  else if (<%= message == "user_not_actived" %>) 
+  {
+    $("#email").css("background", "rgba(255, 0, 0, 0.2)");
+    $("#error_email").text("пользователь с таким email-ом не активирован");
+    $("#email").focus();
+  }
+  
+
+}
+else
+{
+  $("#<%= type %>").click();
+}
+
+

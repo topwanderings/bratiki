@@ -1,0 +1,18 @@
+<article id="edit_post">
+  <section id="main">
+    <h1>
+      <%=  link_to("Должности", {:controller => '/admin/dictionary/post', :action => 'index'}) %> / <b><%=  link_to(Post.find(params[:id]).name, {:controller => '/admin/dictionary/scientific_degree', :action => 'edit', :id => params[:id]}) %></b>
+    </h1>
+    <%= form_tag({:action => "edit"}) do %>
+       <p class="field">
+          <label for="name" data-icon="u" > Должность </label>
+          <%= text_field_tag("name", @post.name, {:placeholder => "начальник кафедры"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

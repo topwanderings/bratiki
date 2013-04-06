@@ -1,0 +1,9 @@
+<%= table_for @scientific_degrees do |t| %>
+    <%= t.body do |scientific_degree| %>
+        <%= t.r do %>
+            <%= t.d button_to("удалить", { :controller => '/admin/dictionary/scientific_degree', :action => 'destroy', :id => scientific_degree}, {:class => 'destroy'}) %>
+            <%= t.d link_to(scientific_degree.name, { :controller => '/admin/dictionary/scientific_degree', :action => 'edit', :id => scientific_degree}) %>
+        <% end %>
+    <% end %>
+<% end %>
+

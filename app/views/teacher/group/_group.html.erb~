@@ -1,0 +1,10 @@
+<article>
+  <section id="main">
+    <h1>
+      <%=  link_to("Группы", {:controller => '/teacher/group', :action => 'index'}) %> / <b><%=  link_to(@group.name, {:controller => '/teacher/group', :action => 'show', :group_id => @group}) %></b>
+    </h1>
+    <ul>
+      <li><label><%= @group.number %></label></li>
+    </ul>
+  </section>
+</article>

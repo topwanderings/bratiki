@@ -1,0 +1,545 @@
+// Place all the styles related to the task controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ShowTaskHelper
+{
+  display: inline-block;
+  position: relative;
+  padding: 6px 6px;
+  margin: 10px;
+  text-decoration: none;
+  color: #000;
+  font: bold 14px 'Lucida sans', Arial, Helvetica;
+  background-color: rgb(255, 40, 40);
+  border-radius: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset,
+  0 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 2px rgba(0, 0, 0, .3),
+  0 10px 10px -5px rgba(0, 0, 0, .2);
+}
+
+body
+{
+  font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  background: #fff url('../background.jpg') repeat top left;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Tasks
+{
+  padding-left: 15px;
+}
+
+section
+{
+  padding-left: 100px;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.Navigation
+{
+  font-size: 18px;
+  width: 610px;
+  margin-top: -56px;
+  padding-left: 20px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+}
+
+.Navigation p
+{
+  margin: 17px;
+}
+
+.SelectOwnerPatterns
+{
+  text-align: left
+}
+
+.SelectOwnerPatterns table
+{
+  display: inline-block;
+}
+
+.ListTasks
+{
+  padding-left: 8px;
+  margin-top: 16px;
+
+  width: 620px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+}
+
+
+
+
+.SelectItemManagement, .SelectOwnerPatterns
+{
+  position: absolute;
+  top: 100px;
+  left: 800px;
+  width: 640px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+}
+
+.ContentListPatterns .Finder
+{
+  margin-top: 30px;
+}
+
+.ContentListPatterns
+{
+  padding-bottom: 30px;
+}
+
+.ContentItemManagement
+{
+  padding-top: 20px;
+  padding-left: 8px;
+  position: absolute;
+  top: 180px;
+  left: 700px;
+  width: 630px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+}
+
+.Task
+{
+  margin-top: 30px;
+  width: 50px;
+}
+
+.AddTask
+{
+  margin-top: 30px;
+}
+
+.Task input
+{
+  border: 1px dashed #999;
+  background: #F7F7F7;
+  border: 0px;
+  width: 450px;
+}
+
+.ClickTask
+{
+  cursor: pointer;
+}
+
+.ClickTask
+{
+  background: url('../edit3.png');
+  width: 32px;
+  height: 32px;
+}
+
+.Parameter input
+{
+  width: 220px;
+  background: #F7F7F7;
+  border: 0px;
+}
+
+.DestroyParameter
+{
+  margin-left: 10px;
+  background: url('../destroyparameter.png');
+  width: 16px;
+  height: 16px;
+}
+
+.DestroyUsersPattern
+{
+  position: relative;
+  left: 80%;
+  background: url('../destroyparameter.png');
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.Pattern
+{
+  cursor: move;
+}
+
+.FormAddParameter
+{
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  background: url('../background.jpg');
+}
+
+.Pattern .NamePattern p
+{
+  font-family: Verdana san-serif;
+  font-size: 16px;
+  width: 400px;
+}
+
+.Pattern .NamePattern p
+{
+  padding: 5px 0px;
+}
+
+.SelectTypeParameter, .SelectNameParameter, .SelectValueParameter
+{
+  margin: 30px;
+}
+
+.FormAddParameter input
+{
+  width: 300px;
+}
+
+.ListTasks, .Navigation, section > .SelectItemManagement, .ContentItemManagement, .SelectOwnerPatterns, .TasksHelper
+{
+  background: #F7F7F7;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -webkit-box-shadow: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.SelectTypeParameter table
+{
+  width: 500px;
+}
+
+
+
+.ListBox
+{
+  margin-left: 30px;
+  width: 300px;
+  height: 300px;
+}
+
+#ListBoxAllItems, #ListBoxSelectedItems
+{
+  height: 250px;
+  width: 250px;
+}
+
+.SelectItemManagement table, .SelectOwnerPatterns table
+{
+  #width: 480px;
+  text-align: left;
+}
+
+.TasksHelper
+{
+  padding: 10px;
+  font-size: 14px;
+}
+
+.SelectOwnerPatterns, .LinkTask, .SelectItemManagement, .AddParameter, .AddTask, .SelectTypeParameter p, .ListBox p
+{
+  cursor: pointer;
+}
+
+.TaskComplete input
+{
+  text-decoration: line-through;
+  color: #9C9CA1;
+}
+
+.ClickableItem
+{
+  background: #5CB076;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -webkit-box-shadow: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+header form
+{
+  display: inline-block;
+}
+
+header
+{
+  text-align: center;
+}
+
+header input#restart
+{
+  margin-left: 10px;
+  background: transparent url('restart.png') no-repeat center top;
+  border: 0;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  text-indent: -1000em;
+  cursor: pointer;
+}
+
+
+nav
+{
+  margin: 10px auto;
+  text-align: center;
+  display: inline-block;
+}
+
+nav ul
+{
+  margin: 1px;
+  padding: 0;
+  text-align: center;
+}
+
+nav li, section ul li
+{
+  text-align: left;
+  margin: 0 0px;
+  display: inline-block;
+
+  zoom: 1;
+}
+nav a, section ul li a
+{
+  display: inline-block;
+  position: relative;
+  padding: 8px 15px;
+  margin: 1px;
+  text-decoration: none;
+  color: #fff;
+  font: bold 14px 'Lucida sans', Arial, Helvetica;
+  background-color: rgb(9, 161, 215);
+  background-image: linear-gradient(top, #eaeaea, #fff);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset,
+  0 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 2px rgba(0, 0, 0, .3),
+  0 10px 10px -5px rgba(0, 0, 0, .2);
+}
+
+nav a:hover, section ul li a:hover
+{
+  background-color: rgb(9, 173, 226);
+  background-image: linear-gradient(top, #eee, #fff);
+}
+
+nav a:active, section ul li a:active
+{
+  top: 1px;
+  background: rgb(9, 161, 215);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+div.InputNameTask input
+{
+  font-size: 16px;
+  border: 1px dashed #999;
+}
+div.InputNameTask input:focus
+{
+  border: 1px solid #999;
+}
+
+div.ListPatterns
+{
+  padding-left: 40px;
+  position: absolute;
+  top: 180px;
+  left: 700px;
+  width: 600px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+}
+
+
+
+div.ContentItemManagement
+{
+  margin-left: 100px;
+  paddin-left:10px;
+}
+
+div.ParameterName input
+{
+  padding: 4px 0px;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+div.ParameterValue input
+{
+  padding: 4px 0px;
+  font-size: 16px;
+}
+
+div.ManagementPatterns, div.ManagementParameters, div.SelectSystemPatterns, div.SelectUsersPatterns
+{
+  text-align: left;
+  margin: 0 0px;
+  display: inline-block;
+}
+
+div.ManagementPatterns p, div.ManagementParameters p, div.SelectSystemPatterns p, div.SelectUsersPatterns p
+{
+  display: inline-block;
+  position: relative;
+  padding: 8px 15px;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  font: bold 14px 'Lucida sans', Arial, Helvetica;
+  background-color: rgb(9, 161, 215);
+  background-image: linear-gradient(top, #eaeaea, #fff);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset,
+  0 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 2px rgba(0, 0, 0, .3),
+  0 10px 10px -5px rgba(0, 0, 0, .2);
+}
+
+div.ManagementPatterns p:hover, div.ManagementParameters p:hover, div.SelectSystemPatterns p:hover, div.SelectUsersPatterns p:hover
+{
+  background-color: rgb(9, 173, 226);
+  background-image: linear-gradient(top, #eee, #fff);
+}
+
+div.ManagementPatterns p:active, div.ManagementParameters p:active, div.SelectSystemPatterns p:active, div.SelectUsersPatterns p:active
+{
+  top: 1px;
+  background: rgb(9, 161, 215);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+div.AddParameter, div.AddTask
+{
+  text-align: left;
+  margin: 0 0px;
+  display: inline-block;
+}
+
+div.AddParameter p, div.AddTask p
+{
+  display: inline-block;
+  position: relative;
+  padding: 8px 15px;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  font: bold 14px 'Lucida sans', Arial, Helvetica;
+  background-color: #12964C;
+  background-image: linear-gradient(top, #eaeaea, #fff);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset,
+  0 0 1px 0 rgba(0, 0, 0, .2),
+  0 2px 2px rgba(0, 0, 0, .3),
+  0 10px 10px -5px rgba(0, 0, 0, .2);
+}
+
+div.AddParameter p:hover, div.AddTask p:hover 
+{
+  background-color: #129F55;
+  background-image: linear-gradient(top, #eee, #fff);
+}
+
+div.AddParameter p:active, div.AddTask p:active
+{
+  top: 1px;
+  background: #12964C;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+article section div.ListPatterns
+{
+  widht: 740px;
+  margin-left: 100px;
+  background: #F7F7F7;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  -webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7), 0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+  -webkit-box-shadow: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+div.Finder input:after
+{
+  display: inline-block;
+  position: absolute;
+  top: 34px;
+  left: 460px;
+  content: url('../find.png');
+}
+
+
+div.Finder input
+{
+  outline: none;
+  width: 400px;
+  margin-top: 4px;
+  padding: 8px 5px 8px 8px;
+  border: 1px solid rgb(178, 178, 178);
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing : content-box;
+  box-sizing : content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+div.Finder input:active,
+div.Finder input:focus
+{
+  border: 1px solid rgba(91, 90, 90, 0.7);
+  background: rgba(238, 236, 240, 0.2);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+  -moz-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+}
+
+::-webkit-input-placeholder  {
+  color: rgb(190, 188, 188);
+  font-style: italic;
+}
+article section#main form p.field input:-moz-placeholder
+{
+  color: rgb(190, 188, 188);
+  font-style: italic;
+}
+
+div.ParameterValue 
+{
+  width: 300px;
+}
+
+div.ParameterValue input
+{
+  padding: 8px 0px 8px 8px;
+  size: 300px;
+  width: 300px;
+}
+
+div.Parameter table
+{
+  display: inline-block;
+}
+
+
+
+

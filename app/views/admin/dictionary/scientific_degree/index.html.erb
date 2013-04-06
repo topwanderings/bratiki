@@ -1,0 +1,12 @@
+<article id="scientific_degrees">
+  <section id="main">
+    <h1>
+      <%=  link_to("Словари", {:controller => '/admin/dictionary', :action => 'index'}) %> / <b><%=  link_to("Ученые степени", {:controller => '/admin/dictionary/scientific_degree', :action => 'index'}) %></b>
+    </h1>
+    <%= render(:partial => 'scientific_degrees') %>
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/admin/dictionary/scientific_degree', :action => 'new'}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>
+

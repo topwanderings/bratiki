@@ -1,0 +1,46 @@
+<article id="edit_user">
+  <section id="main">
+    <h1>
+      <%=  link_to("Пользователи", {:controller => '/admin/user', :action => 'index'}) %> / <b><%=  link_to(sprintf("%s %s %s", @person.last_name, @person.first_name, @person.middle_name), {:controller => '/admin/user', :action => 'edit', :id => params[:id]}) %></b>
+    </h1>
+    <%= form_tag({:action => "edit"}) do %>
+        <p class="field">
+          <label for="last_name" data-icon="u" > Фамилия </label>
+          <%= text_field_tag("last_name", @person.last_name, {:placeholder => "Иванов"}) %>
+          <label for="last_name" id="error_last_name" class="error"><%= flash[:last_name] %></label>
+        </p>
+        <p class="field">
+          <label for="first_name" data-icon="u" > Имя </label>
+          <%= text_field_tag("first_name", @person.first_name, {:placeholder => "Иван"}) %>
+          <label for="first_name" id="error_first_name" class="error"><%= flash[:first_name] %></label>
+        </p>
+        <p class="field">
+          <label for="middle_name" data-icon="u" > Отчество </label>
+          <%= text_field_tag("middle_name", @person.middle_name, {:placeholder => "Иванович"}) %>
+          <label for="middle_name"  class="error"><%= flash[:middle_name] %></label>
+        </p>
+        <p>
+          <label for="sex"> Пол </label>
+          <%= select_tag(:sex_id, options_from_collection_for_select(Sex.all, :id, :name, @person.sex_id),  {:class => "select", :id => "sex"}) %>
+        </p>
+
+        <% unless Course.all.empty? %>
+            <p>
+              <label for="course"> Курс </label>
+              <%= select_tag(:course_id, options_from_collection_for_select(Course.all, :id, :number, @person.course_id), {:class => "select", :id => "course", :prompt => "группа"}) %>
+            </p>
+        <% end %>
+        
+        <% unless MilitaryRank.all.empty? %>
+            <p>
+              <label for="military_rank"> Воинское звание </label>
+              <%= select_tag(:military_rank_id, options_from_collection_for_select(MilitaryRank.all, :id, :name, @person.military_rank_id),{:class => "select", :id => "military_rank", :prompt => "гражданский"}) %>
+            </p>
+        <% end %>
+        
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

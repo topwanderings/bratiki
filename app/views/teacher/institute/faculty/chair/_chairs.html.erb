@@ -1,0 +1,19 @@
+<%= table_for @chairs do |t| %>
+    <%= t.body do |chair| %>
+        <%= t.r do %>
+            <%= t.d link_to(chair.name, { :controller => '/teacher/institute/faculty/chair', :action => 'show', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => chair }, {:method => 'get', :class => 'show'}) %>
+        <% end %>
+        <%= t.r do %>
+          <%= t.d :class => 'td_list', :colspan => 3 do  %>
+            <%= link_to("Группы", { :controller => '/teacher/institute/faculty/chair/group', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => chair }, {:class => 'list_name'}) %>
+            <br/><%chair.groups.each do |group| %>
+              <%= link_to(group.number, {:controller => '/teacher/institute/faculty/chair/group', :action => 'show', :institute_id =>params[:institute_id], :faculty_id => params[:faculty_id], :chair_id => chair, :group_id => group}, {:class => 'list'}) %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+
+
+
+

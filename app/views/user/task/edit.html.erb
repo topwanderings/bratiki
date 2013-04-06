@@ -1,0 +1,27 @@
+<article id="edit_task">
+  <section id="main">
+    <%= form_tag({:action => "edit"}) do %>
+        <h1>
+          Изменить
+        </h1>
+
+        <p class="field">
+          <label for="title"> Заголовок </label>
+          <%= text_field_tag("title", @task.title, {:placeholder => "Заголовок"})  %>
+          <label for="title" id="error_title" class="error"><%= flash[:title] %></label>
+        </p>
+
+        <p class="field">
+          <label for="title"> Описание </label>
+          <%= text_area_tag("note", @task.note)  %>
+          <label for="note" id="error_note" class="error"><%= flash[:note] %></label>
+        </p>
+
+        <%= select_datetime(@task.date_time)  %>
+
+        <p class="button">
+          <%= submit_tag "Сохранить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

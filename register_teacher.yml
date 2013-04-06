@@ -1,0 +1,38 @@
+za@mail.ru:
+   type: Teacher
+   password: infoSec5
+   last_name: Заец
+   first_name: Мирослав
+   middle_name: Владимирович
+   sex: мужской
+   course: Заец
+   time: 2012-06-24 11:32:03 UTC
+sev@mail.ru:
+   type: Teacher
+   password: infoSec5
+   last_name: Шевченко
+   first_name: Всеволод
+   middle_name: Александрович
+   sex: мужской
+   course: Шевченко
+   room: 135
+   time: 2012-06-24 11:44:38 UTC
+sev2@mail.ru:
+   type: Teacher
+   password: infoSec5
+   last_name: Шевченко
+   first_name: Всеволод
+   middle_name: Александрович
+   sex: мужской
+   course: Шевченко
+   room: 135
+   time: 2012-06-24 11:44:38 UTC
+za2@mail.ru:
+   type: Teacher
+   password: infoSec5
+   last_name: Заец
+   first_name: Мирослав
+   middle_name: Владимирович
+   sex: #<Sex:0x00000004e77f08>
+   course: Заец
+   time: 2012-06-24 11:32:03 UTC

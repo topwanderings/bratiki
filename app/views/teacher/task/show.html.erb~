@@ -1,0 +1,90 @@
+<article>
+  <section>
+    <div class='Navigation'>
+      <table><tr>
+        <td>
+          <div class='LinkTask'><p>Список задач > </p></div>
+        </td>
+        <% unless @parent_names.empty? %>
+          <% @parent_names.each do |parent| %>
+            <td>
+              <div class="LinkTask" id='<%= parent[:id] %>'><p><%= parent[:name] %> > </p></div>
+            </td>
+          <% end %>
+        <% end %>
+        <td>
+          <p><%= @task.name %></p>
+        </td>
+      </tr></table>
+
+    </div>
+    <div class='ListTasks' id='<%= @task.id %>'>
+      <div class='Tasks'>
+        <% if @sub_tasks %>
+          <% @sub_tasks.each do |task| %>
+            <div class='Task<% if task.status %> TaskComplete<% end %>' id = '<%= task.id %>'>
+              <table><tr>
+                <td>
+                  <div class='ShowTaskHelper'>•</div>
+                </td>
+                <td>
+                <div class="InputNameTask">
+                  <input type='text' value='<%= task.name %>'>
+                </div>
+                </td>
+                <td>
+                  <div class='ClickTask'></div>
+                </td>
+              </tr></table>
+            </div>
+          <% end %>
+        <% end %>
+        <div class='AddTask'>
+          <p>Добавить задачу</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="SelectItemManagement">
+      <table><tr>
+        <td>
+          <div class='ManagementParameters'><p>Параметры</p></div>
+        </td>
+        <td>
+          <div class='ManagementPatterns'><p>Мои задачи</p></div>
+        </td>
+      </tr></table>
+    </div>
+
+    <div class='ContentItemManagement'>
+      <div class='ListParameters' id='<%= @task.id %>'>
+        <div class='Parameters'>
+          <% if @parameters  %>
+            <% @parameters.each do |parameter| %>
+              <div class='Parameter' id='<%= parameter.id %>'>
+                <table><tr>
+                  <td>
+                    <div class='ParameterName'>
+                      <input type='text' value='<%= parameter.name %>'>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='ParameterValue <%= parameter.entity %>'>
+                      <input type='text' value='<%= parameter.value %>'>
+                    </div>
+                  </td>
+                  <td>
+                    <div class='DestroyParameter'></div>
+                  </td>
+                </tr></table>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class='AddParameter'>
+        <p>Добавить параметр</p>
+      </div>
+    </div>
+  </section>
+</article>

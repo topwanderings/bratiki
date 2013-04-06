@@ -1,0 +1,8 @@
+<article id="institutes">
+  <section id="main">
+    <h1>
+      <%=  link_to("Администрирование", {:controller => '/teacher', :action => 'home'}) %> / <b><%=  link_to("Институты", {:controller => '/teacher/institute', :action => 'index'}) %></b>
+    </h1>
+    <%= render(:partial => 'institutes') %>
+  </section>
+</article>

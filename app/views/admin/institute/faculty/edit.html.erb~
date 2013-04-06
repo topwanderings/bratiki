@@ -1,0 +1,29 @@
+<article id="edit_faculty">
+  <section id="main">
+    <h1>
+      <%=  link_to("Факультеты", {:controller => '/admin/institute/faculty', :action => 'index', :institute_id => params[:institute_id]}) %> / <b><%=  link_to(Faculty.find(params[:faculty_id]).name, {:controller => '/admin/institute/faculty', :action => 'edit', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id]}, {:method => 'get'}) %></b>
+    </h1>
+    <ul>
+      <li><%= link_to("Кафедры", { :controller => '/admin/institute/faculty/chair', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id] }) %></li>
+      <li><%= link_to("Группы", { :controller => '/admin/institute/faculty/group', :action => 'index', :institute_id => params[:institute_id], :faculty_id => params[:faculty_id] }) %></li>
+    </ul>
+    <%= form_tag({:action => "edit", :institute_id => params[:institute_id]}) do %>
+        <p class="field">
+          <label for="name" data-icon="u" > Название </label>
+          <%= text_field_tag("name", @faculty.name, {:placeholder => "Информационная безопасность"})  %>
+          <label for="name" id="error_name" class="error"><%= flash[:name] %></label>
+        </p>
+
+        <% unless Institute.all.empty? %>
+            <p>
+              <label for="institute"> Институт </label>
+              <%= select_tag(:institute_id, options_from_collection_for_select(Institute.all, :id, :name, @faculty.institute_id), {:class => "select", :id => "institute", :prompt => "институт"}) %>
+            </p>
+        <% end %>
+
+        <p class="button">
+          <%= submit_tag "Изменить" %>
+        </p>
+    <% end %>
+  </section>
+</article>

@@ -1,0 +1,21 @@
+<% for group in @groups %>
+    <ul>
+      <li>
+        <%= link_to(group.number, { :controller => '/admin/chair/group', :action => 'edit', :id => group, :chair_id => params[:chair_id] }) %>
+      </li>
+      <li>
+        <%= link_to("удалить", { :controller => '/admin/chair/group', :action => 'destroy', :id => group, :chair_id => params[:chair_id] }) %>
+      </li>
+    </ul>
+<% end %>
+
+<%= table_for @groups do |t| %>
+    <%= t.body do |group| %>
+        <%= t.r do %>
+            <%= t.d button_to("удалить", { :controller => '/admin/chair/group', :action => 'destroy', :id => group, :chair_id => params[:chair_id] }, {:class => 'destroy'}) %>
+            <%= t.d link_to(group.number, { :controller => '/admin/chair/group', :action => 'edit', :id => group, :chair_id => params[:chair_id] }) %>
+        <% end %>
+    <% end %>
+<% end %>
+
+

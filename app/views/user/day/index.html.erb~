@@ -1,0 +1,37 @@
+<article>
+  <section id="main">
+    <h1>
+      <%=  link_to("Календарь", {:controller => '/user', :action => 'calendar'}) %> / <b><%=  link_to(format_date(@date1), {:controller => '/user/day', :action => 'index', :year => params[:year], :month => params[:month], :day => params[:day]}) %></b>
+    </h1>
+
+    <h2>Пары</h2>
+    <%= table_for @pairs do |t| %>
+        <%= t.body do |pair| %>
+            <%= t.r do %>
+                <%= t.d link_to(pair.object, { :controller => '/user/day/pair', :action => 'edit', :pair_id => pair }) %>
+                <%= t.d button_to("изменить", { :controller => '/user/day/pair', :action => 'edit', :pair_id => pair}, {:method => 'get', :class => 'edit'}) %>
+                <%= t.d button_to("удалить", { :controller => '/user/day/pair', :action => 'destroy', :pair_id => pair}, {:class => 'destroy'}) %>
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/user/day/pair', :action => 'new', :day => params[:day], :month => params[:month], :year => params[:year]}, {:method => :get, :class => "new"}) %>
+    </p>
+
+    <h2>Задачи</h2>
+    <%= table_for @tasks do |t| %>
+        <%= t.body do |task| %>
+            <%= t.r do %>
+                <%= t.d link_to(task.title, { :controller => '/user/task', :action => 'edit', :task_id => task }) %>
+                <%= t.d button_to("изменить", { :controller => '/user/task', :action => 'edit', :task_id => task}, {:method => 'get', :class => 'edit'}) %>
+                <%= t.d button_to("удалить", { :controller => '/user/task', :action => 'destroy', :task_id => task}, {:class => 'destroy'}) %>
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <p class="button">
+      <%= button_to("Добавить", { :controller => '/user/task', :action => 'new',  :day => params[:day], :month => params[:month], :year => params[:year]}, {:method => :get, :class => "new"}) %>
+    </p>
+  </section>
+</article>

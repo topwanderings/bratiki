@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+  <title>Bratiki</title>
+  <%= stylesheet_link_tag 'chief' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to("Домашняя", {:controller => '/chief', :action => 'home'}) %></li>
+      <li><%= link_to("Календарь", {:controller => '/chief', :action => 'calendar', :month => params[:month], :year => params[:year], :day => nil})%></li>
+      <li><%= link_to("Выход", {:controller => '/user/login', :action => 'logout'})%></li>
+    </ul>
+  </nav>​
+</header>
+<%= yield %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<div class='ListParameters'>
+  <div class='Parameters' id='<%= @task.id %>'>
+    <% if @parameters  %>
+      <% @parameters.each do |parameter| %>
+        <div class='Parameter' id='<%= parameter.id %>'>
+          <table><tr>
+            <td>
+              <div class='ParameterName'>
+                <input type='text' value='<%= parameter.name %>'>
+              </div>
+            </td>
+            <td>
+              <div class='ParameterValue <%= parameter.entity %>' >
+                <input type='text' value='<%= parameter.value %>'>
+              </div>
+            </td>
+            <td>
+              <div class='DestroyParameter'></div>
+            </td>
+          </tr></table>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class='AddParameter'>
+    <p>Добавить параметр</p>
+  </div>
+</div>
+
+<div class='ListPatterns' id='<%= @task.id %>'>
+  <div class='Finder'>
+    <input type='text'>
+  </div>
+  <div class='ContentListPatterns'>
+    <div class='Patterns'>
+      <% if @names_pattern %>
+        <% @names_pattern.each do |pattern| %>
+          <div class='Pattern' id='<%= pattern[:id] %>'>
+            <p><%= pattern[:name] %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
